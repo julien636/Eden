@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quantity: 1.5
+  date_harvest: 2019-09-09 16:03:06
+  price: 1.5
+  offer_adress: MyString
+  offer_zipcode: MyString
+
+two:
+  quantity: 1.5
+  date_harvest: 2019-09-09 16:03:06
+  price: 1.5
+  offer_adress: MyString
+  offer_zipcode: MyString
