@@ -1,4 +1,7 @@
 class TransactionsController < ApplicationController
+  def index
+  end
+
   def new
   end
 
@@ -7,4 +10,11 @@ class TransactionsController < ApplicationController
 
   def edit
   end
+
+  def update
+  end
+
+  def destroy
+  end
+
 end
