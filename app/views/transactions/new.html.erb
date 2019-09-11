@@ -1,2 +1,23 @@
 <h1>Transactions#new</h1>
 <p>Find me in app/views/transactions/new.html.erb</p>
+  <%= form_for @newtransaction, :url => "/offers/#{@offer.id}/transactions" do |f| %>
+    <p><%=Product.find(@offer.product_id).prod_name %></p>
+    <p>Quantité : <%=@offer.offer_quantity %> kg</p>
+    <p>Récolte prévu le <%=@offer.date_harvest %></p>
+    <p>Prix : <%=@offer.offer_price %> €/kg</p>
+    <p>Adresse : <%=@offer.offer_adress%></p>
+    <p>Ville : <%=@offer.offer_city%></p>
+    <p> ZIP : <%=@offer.offer_zipcode %></p>
+    <p> Pays :<%=@offer.offer_country %> </p>
+
+    <%= f.label :Date_de_rencontre %><br />
+    <%= f.date_field :transa_date, autofocus: true, autocomplete: "transa_date", min: @offer.date_harvest %><br /><br />
+
+    <%= f.label :Quantité %><br />
+    <%= f.number_field :transa_quantity, autofocus: true,in: 5..@offer.offer_quantity, step: 5, autocomplete: "transa_quantity" %> kg <br /><br />
+
+    <button type='submit'> Commander </button>
+                
+  <%end%>
+
+

@@ -1,2 +1,30 @@
 <h1>Buyers#show</h1>
 <p>Find me in app/views/buyers/show.html.erb</p>
+<p>Profil : </p> 
+Prénom : <%= current_buyer.first_name%><br/>
+Nom : <%= current_buyer.last_name%><br/>
+Zipcode : <%= current_buyer.buyer_zipcode%><br/>
+Adresse : <%= current_buyer.buyer_adress%><br/>
+Ville : <%= current_buyer.buyer_city%><br/>
+Pays : <%= current_buyer.buyer_country%><br/>
+Notation : <%= current_buyer.buyer_rating%>/5<br/>
+
+<a href="<%=edit_buyer_path%>">Editer le profil</a>
+<a href="<%=edit_buyer_registration_path%>">Editer email/password</a>
+
+<h1>Transaction :</h1>
+<%current_buyer.transactions.each do |transa|%>
+  <p>Produit : <%=transa.offer.product.prod_name%>
+  <p>Adress : <%=transa.transa_adress%></p>
+  <p>Zipcode : <%=transa.transa_zipcode%></p>
+  <p>Ville : <%=transa.transa_city%></p>
+  <p>Quantité : <%=transa.transa_quantity%> kg</p>
+  <p>Date de rencontre : <%=transa.transa_date%></p>
+  <%if transa.transa_confirmation == false %>
+    <p>En attente confirmation producteur</p>
+  <%else%>
+    <p>Commande confirmé</p>
+  <%end%>
+  <a href="<%=edit_offer_transaction_path(transa.offer.id, transa.id)%>" role="button">Editer</a><br/><br/>
+
+<%end%>

@@ -1,0 +1,26 @@
+<h2>Mettre le profil à jour</h2>
+<%= form_for @buyer do |f| %>
+
+  <%= f.label :Prénom %><br />
+  <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %><br/><br/>
+
+  <%= f.label :Nom %><br/>
+  <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %><br/><br/>
+
+  <%= f.label :Zipcode %><br />
+  <%= f.text_field :buyer_zipcode, autofocus: true, autocomplete: "buyer_zipcode" %><br/><br/>
+  
+  <%= f.label :Adresse %><br />
+  <%= f.text_field :buyer_adress, autofocus: true, autocomplete: "buyer_adress" %><br/><br/>
+
+  <%= f.label :Ville %><br />
+  <%= f.text_field :buyer_city, autofocus: true, autocomplete: "buyer_city" %><br/><br/>
+
+  <%= f.label :Pays %><br />
+  <%= f.text_field :buyer_country, autofocus: true, autocomplete: "buyer_country" %><br/><br/>
+
+  <button type="submit" class="btn btn-outline-primary">Editer le profil</button>
+                        
+
+              
+<% end %>

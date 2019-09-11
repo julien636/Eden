@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_09_142519) do
+ActiveRecord::Schema.define(version: 2019_09_11_112139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_09_09_142519) do
     t.string "last_name"
     t.string "buyer_zipcode"
     t.string "buyer_adress"
-    t.string "buyer_zip"
+    t.string "buyer_city"
     t.string "buyer_country"
     t.string "buyer_rating_number"
     t.string "buyer_rating"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2019_09_09_142519) do
     t.string "farmer_country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "farmer_city"
   end
 
   create_table "offers", force: :cascade do |t|
@@ -57,6 +58,7 @@ ActiveRecord::Schema.define(version: 2019_09_09_142519) do
     t.datetime "updated_at", null: false
     t.bigint "product_id"
     t.bigint "farmer_id"
+    t.string "offer_city"
     t.index ["farmer_id"], name: "index_offers_on_farmer_id"
     t.index ["product_id"], name: "index_offers_on_product_id"
   end
@@ -78,6 +80,9 @@ ActiveRecord::Schema.define(version: 2019_09_09_142519) do
     t.datetime "updated_at", null: false
     t.bigint "buyer_id"
     t.bigint "offer_id"
+    t.datetime "transa_date"
+    t.string "transa_city"
+    t.boolean "transa_confirmation"
     t.index ["buyer_id"], name: "index_transactions_on_buyer_id"
     t.index ["offer_id"], name: "index_transactions_on_offer_id"
   end
