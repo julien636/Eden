@@ -1,4 +1,6 @@
 class BuyersController < ApplicationController
+  before_action :authenticate_buyer!
+
   def show
   
   end
@@ -21,5 +23,5 @@ class BuyersController < ApplicationController
   def buyer_update
     params.require(:buyer).permit(:first_name, :last_name, :buyer_adress,:buyer_city,:buyer_country,:buyer_zipcode, buyer: current_buyer)
   end
-
+ 
 end

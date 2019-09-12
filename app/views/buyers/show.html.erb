@@ -1,6 +1,5 @@
-<h1>Buyers#show</h1>
-<p>Find me in app/views/buyers/show.html.erb</p>
-<p>Profil : </p> 
+<h1>Mon profil</h1>
+
 Prénom : <%= current_buyer.first_name%><br/>
 Nom : <%= current_buyer.last_name%><br/>
 Zipcode : <%= current_buyer.buyer_zipcode%><br/>
@@ -12,7 +11,7 @@ Notation : <%= current_buyer.buyer_rating%>/5<br/>
 <a href="<%=edit_buyer_path%>">Editer le profil</a>
 <a href="<%=edit_buyer_registration_path%>">Editer email/password</a>
 
-<h1>Transaction :</h1>
+<h1>Transaction en cours :</h1>
 <%current_buyer.transactions.each do |transa|%>
   <p>Produit : <%=transa.offer.product.prod_name%>
   <p>Adress : <%=transa.transa_adress%></p>
@@ -25,6 +24,6 @@ Notation : <%= current_buyer.buyer_rating%>/5<br/>
   <%else%>
     <p>Commande confirmé</p>
   <%end%>
-  <a href="<%=edit_offer_transaction_path(transa.offer.id, transa.id)%>" role="button">Editer</a><br/><br/>
+  <a href="<%=offer_transaction_path(transa.offer.id, transa.id)%>" role="button">Voir</a><br/><br/>
 
 <%end%>

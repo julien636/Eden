@@ -3,11 +3,10 @@ Rails.application.routes.draw do
   get 'static_pages/team'
   get 'static_pages/contact'
   root :to => "static_pages#home"
-  resources :offers, only: [:index, :show, :create] do
+  resources :offers, only: [:index] do
     resources :transactions
   end
   resources :buyers, only: [:show, :edit, :update]
-  resources :farmers, only: [:create]
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

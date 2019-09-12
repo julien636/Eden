@@ -15,10 +15,13 @@
     <% end %>
 
     <% if current_buyer%>
-      <%= link_to "Profil", buyer_path(current_buyer.id) %><br />
+      <%= link_to "Eden", offers_path %>&nbsp;
+      <%= link_to "Mon Profil", buyer_path(current_buyer.id) %>&nbsp;
+      <%= link_to "Se déconnecter", destroy_buyer_session_path, :data => {:confirm => 'Are you sure?'},:data => {:method => 'DELETE'} %><br />
     <%else%>
-      <%= link_to "Log in", new_buyer_session_path %><br />
-      <%= link_to "Sign up", new_buyer_registration_path %><br />
+      <%= link_to "Eden", root_path %>&nbsp;
+      <%= link_to "Se connecter", new_buyer_session_path %>&nbsp;
+      <%= link_to "S'inscrire", new_buyer_registration_path %><br />
     <%end%>
 
     <%= yield %>
