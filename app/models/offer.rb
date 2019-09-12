@@ -1,5 +1,6 @@
 class Offer < ApplicationRecord
     has_many :transactions
-    belongs_to :product
+    ## When db product is full
+    #belongs_to :product
     belongs_to :farmer
 end
