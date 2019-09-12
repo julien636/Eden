@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_09_11_112139) do
     t.string "last_name"
     t.string "buyer_zipcode"
     t.string "buyer_adress"
-    t.string "buyer_zip"
+    t.string "buyer_city"
     t.string "buyer_country"
     t.string "buyer_rating_number"
     t.string "buyer_rating"
