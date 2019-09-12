@@ -14,7 +14,7 @@ require 'faker'
 end
 
 10.times do 
-    Farmer.create(phone_number:Faker::PhoneNumber.phone_number, rating_number:0,rating:5,farmer_zipcode:Faker::Address.zip_code,farmer_adress:Faker::Address.street_address, farmer_country:"Sénégal", farmer_city:"Dakar" )
+    Farmer.create(phone_number:Faker::PhoneNumber.phone_number, rating_number:0,rating:5,farmer_zipcode:Faker::Address.zip_code,farmer_adress:Faker::Address.street_address, farmer_country:"Sénégal", farmer_city:"Dakar",count:0 )
 end
 
 10.times do 
