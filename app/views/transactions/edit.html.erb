@@ -1,3 +1,11 @@
+<ul>
+  <% if @transaction.errors.any? %>                      
+    <p>Nous n'avons pas réussi à modifier le potin pour la (ou les) raison(s) suivante(s) :</p>
+    <% @transaction.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  <% end %>
+</ul>
 <h1>Transactions#edit</h1>
 <p>Find me in app/views/transactions/edit.html.erb</p>
 
@@ -7,7 +15,7 @@
 <p>Quantité : <%=@transaction.transa_quantity%> kg</p>
 <p>Date de rencontre : <%=@transaction.transa_date%></p>
 
-<%= form_for @transaction, :url => "/offers/#{params[:offer_id]}/transactions/#{params[:id]}" do |f| %>
+<%= form_for @transaction, url: offer_transaction_path(params[:offer_id],params[:id]), html: {method: :patch} do |f| %>
     <%= f.label :Date_de_rencontre %><br />
     <%= f.date_field :transa_date, autofocus: true, autocomplete: "transa_date", min: @offer.date_harvest %><br /><br />
 
@@ -15,5 +23,4 @@
     <%= f.number_field :transa_quantity, autofocus: true,in: 5..(@offer.offer_quantity+@transaction.transa_quantity), step: 5, autocomplete: "transa_quantity" %> kg <br /><br />
     <button type='submit'> Editer </button>
 <%end%>
-
 <a class="btn btn-warning" href="<%=offer_transaction_path(params[:offer_id],params[:id])%>" role="button" data-confirm="Etes-vous sur?" data-method="DELETE" >Annuler la Commande</a>

@@ -1,4 +1,7 @@
 class TransactionsController < ApplicationController
+  before_action :authenticate_buyer!
+  before_action :is_buyer_transa?, only: [:edit]
+
   def index
   end
 
@@ -18,11 +21,13 @@ class TransactionsController < ApplicationController
       flash[:notice] = "Produit acheté, en attente confirmation producteur"
       redirect_to root_path
     else
-      render new_offer_transaction_path(@offer.id)
+      render 'new'
     end
   end
 
   def show
+    @transaction=transaction
+    @offer=offer
   end
 
   def edit
@@ -33,6 +38,7 @@ class TransactionsController < ApplicationController
 
   def update
     @transaction=transaction
+    @offer=offer
     if @transaction.update(transaction_update)
       flash[:notice] = "Transaction successfully update"
       redirect_to buyer_path(current_buyer.id)
@@ -59,6 +65,13 @@ class TransactionsController < ApplicationController
 
   def offer
     Offer.find(params[:offer_id])
+  end
+
+  def is_buyer_transa?
+
+    if current_buyer.id!=transaction.buyer_id
+      redirect_to root_path, notice: "Sorry, but you are only allowed to view your own profile page."
+    end
   end
 
 end

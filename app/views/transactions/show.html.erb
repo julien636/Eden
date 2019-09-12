@@ -1,2 +1,8 @@
-<h1>Transactions#show</h1>
-<p>Find me in app/views/transactions/show.html.erb</p>
+<p>Produit : <%=@transaction.offer.product.prod_name%></p>
+<p>Adress : <%=@transaction.transa_adress%></p>
+<p>Zipcode : <%=@transaction.transa_zipcode%></p>
+<p>Ville : <%=@transaction.transa_city%></p>
+<p>Quantité : <%=@transaction.transa_quantity%> kg</p>
+<p>Date de rencontre : <%=@transaction.transa_date%></p>
+
+  <a href="<%=edit_offer_transaction_path(@transaction.offer.id, @transaction.id)%>" role="button">Editer</a><br/><br/>
