@@ -1,3 +1,4 @@
+require 'time'
 class MessagesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
@@ -165,7 +166,8 @@ class MessagesController < ApplicationController
     offer = farmer.offers.last
     offer.offer_quantity = message_body.split(",")[0]
     offer.offer_price = message_body.split(",")[1]
-    offer.date_harvest = message_body.split(",")[2]
+    offer.date_harvest = Time.parse(message_body.split(",")[2])
+    offer.save
   
     boot_twilio
     @client.messages.create ({
