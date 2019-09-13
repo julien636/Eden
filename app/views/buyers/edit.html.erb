@@ -1,4 +1,12 @@
 <h2>Mettre le profil à jour</h2>
+<ul>
+  <% if @buyer.errors.any? %>                      
+    <p>Nous n'avons pas réussi à modifier le potin pour la (ou les) raison(s) suivante(s) :</p>
+    <% @buyer.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  <% end %>
+</ul>
 <%= form_for @buyer do |f| %>
 
   <%= f.label :Prénom %><br />
