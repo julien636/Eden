@@ -6,10 +6,10 @@ class Buyer < ApplicationRecord
 
   has_many :transactions
 
-  validates :first_name, presence:true
-  validates :last_name, presence:true
-  validates :buyer_zipcode, presence:true
-  validates :buyer_adress, presence:true
-  validates :buyer_city, presence:true
-  validates :buyer_country, presence:true
+  validates :first_name, presence:true, on: :update
+  validates :last_name, presence:true, on: :update
+  validates :buyer_zipcode, presence:true, on: :update
+  validates :buyer_adress, presence:true, on: :update
+  validates :buyer_city, presence:true, on: :update
+  validates :buyer_country, presence:true, on: :update
 end
