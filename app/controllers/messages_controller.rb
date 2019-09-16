@@ -109,7 +109,7 @@ class MessagesController < ApplicationController
       @client.messages.create ({
         from: Rails.application.credentials.twilio_number,
         to: from_number,
-        body: "Quel fruit/légume/céréale souhaitez-vous vendre ? Veuillez indiquer la variété du produit. Ex: 'Tomate Cerise'"
+        body: "Quel fruit/légume/céréale souhaitez-vous vendre ? Veuillez indiquer la variété du produit. Ex: 'Riz Sahel 202'"
       })
       farmer.count = 2
       farmer.save
@@ -121,7 +121,7 @@ class MessagesController < ApplicationController
       @client.messages.create ({
         from: Rails.application.credentials.twilio_number,
         to: from_number,
-        body: "Adresse enregistrée ! Quel fruit/légume/céréale souhaitez-vous vendre ? Veuillez indiquer la variété du produit. Ex: 'Tomate Cerise'"
+        body: "Adresse enregistrée ! Quel fruit/légume/céréale souhaitez-vous vendre ? Veuillez indiquer la variété du produit. Ex: 'Riz Sahel 202'"
       })
       farmer.count = 2
       farmer.save
@@ -145,10 +145,9 @@ class MessagesController < ApplicationController
     farmer.count = 3
     farmer.save
 
-    ########When product db is full
-    #product = Product.find_by(prod_subname: message_body)
-    #new_offer.product_id = product.id
-    #new_offer.save
+    newproduct = Product.find_by(prod_subname: message_body)
+    new_offer.product = newproduct
+    new_offer.save
 
     boot_twilio
     @client.messages.create ({
