@@ -3036,5 +3036,21 @@
       padding-right: 10px;
     }
   }
+
   
+  #légumes {
+    display: block;
+  }
+
+  #légumineuses {
+    display: none;
+  }
+
+  #céréales {
+    display: none;
+  }
+
+  #fruits {
+    display: none;
+  }
   
