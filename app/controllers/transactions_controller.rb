@@ -20,6 +20,15 @@ class TransactionsController < ApplicationController
       @offer.update(:offer_quantity => new_quantity)
       flash[:notice] = "Produit acheté, en attente confirmation producteur"
       redirect_to root_path
+
+      
+      boot_twilio
+      @client.messages.create ({
+        from: Rails.application.credentials.twilio_number,
+        to: @offer.farmer.phone_number,
+        body: "Un acheteur souhaite #{@offer.offer_quantity}kilos de #{@offer.product.prod_subname} pour #{@offer.offer_price} par kilo. Pour accepter tapez Y#{@offer.id} pour refuser tapez N#{@offer.id}"
+      })
+      @offer.farmer.count = 4
     else
       render 'new'
     end
@@ -74,4 +83,13 @@ class TransactionsController < ApplicationController
     end
   end
 
+  private
+ 
+  def boot_twilio
+    account_sid = Rails.application.credentials.twilio_sid
+    auth_token = Rails.application.credentials.twilio_token
+    @client = Twilio::REST::Client.new account_sid, auth_token
+  end
+
+  
 end
