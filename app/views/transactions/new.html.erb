@@ -1,12 +1,32 @@
-<ul>
-  <% if @newtransaction.errors.any? %>                      
-    <p>Nous n'avons pas réussi à modifier le potin pour la (ou les) raison(s) suivante(s) :</p>
-    <% @newtransaction.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  <% end %>
-</ul>
-<h1>Transactions#new</h1>
+<section class="hero">
+  <div class="hero-body">
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-fluid">
+    <div class="card">
+      <div class="columns">
+        <div class="column is-two-thirds">
+          <div class="container is-fluid">
+          <br/><br/><br/>
+            is-two-thirds
+          </div>
+        
+        </div>
+        <div class="column">
+          <figure class="image is-4by3">
+                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>  
+
+
+
+
 <p>Find me in app/views/transactions/new.html.erb</p>
   <%= form_for @newtransaction, :url => "/offers/#{@offer.id}/transactions" do |f| %>
     <p><%=Product.find(@offer.product_id).prod_name %></p>

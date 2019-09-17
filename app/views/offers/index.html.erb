@@ -1,13 +1,98 @@
-<h1>Offers#index</h1>
-<p>Find me in app/views/offers/index.html.erb</p>
+<div>
+    <h1 class="heading-6">Bienvenue sur Eden </h1>
+</div>
+<br/><br/><br/>
 
-<% @offers.each do |offer| %>
-<p><%=Product.find(offer.product_id).prod_name %></p>
-<p>Quantité : <%=offer.offer_quantity %> kg</p>
-<p>Récolte prévu le <%=offer.date_harvest %></p>
-<p>Prix : <%=offer.offer_price %> €/kg</p>
-<p>Adresse : <%=offer.offer_adress%></p>
-<p> ZIP : <%=offer.offer_zipcode %></p>
-<p> Pays :<%=offer.offer_country %> </p>
-<a href="<%=new_offer_transaction_path(offer.id)%>" role="button">Acheter</a><br/><br/>
-<%end%>
+   
+<div class="container w-container">
+  
+    <div class="tabs">
+      <ul>
+        <li class="tablinks is-active" onclick="openTab(event, 'légumes')
+        "><a>Légumes</a></li>
+        <li class="tablinks" onclick="openTab(event, 'légumineuses')
+        "><a>Légumineuses</a></li>
+        <li class="tablinks" onclick="openTab(event, 'céréales')
+        "><a>Céréales</a></li>
+        <li class="tablinks" onclick="openTab(event, 'fruits')
+        "><a>Fruits</a></li>
+      </ul>
+    </div>
+   <br/>
+
+    <div id="légumes" class="columns w-row tabcontent">
+      <div class="columns  is-multiline">
+      <% @liste_legumes.each do |offer| %>
+        <div class="column is-one-third">
+          <div class="product-card w-inline-block">
+              <div class="product-card-image-wrapper"><img width="99" src="https://uploads-ssl.webflow.com/5d7e3127cad5177918ca3737/5d7e49b0a3db08f53036d9b4_lemon.svg" alt=""></div>
+              <div class="card-content">
+                <h4 class="product-card-heading"><%=Product.find(offer.product_id).prod_name%></h4>
+                <h6 class="paragraph-2">Quantité renstante: <%=offer.offer_quantity %>kg</h6>
+                <h6 class="paragraph-2 bold">Prix : <%=offer.offer_price %> FCFA/kg</h6>
+                <a href="<%=new_offer_transaction_path(offer.id)%>" role="button" class="button is-primary is-outlined">Voir les détails</a>
+              </div>
+          </div>     
+        </div>
+      <%end%> 
+      </div>  
+    </div>
+
+    <div id="légumineuses" class="columns w-row tabcontent">
+      <div class="columns  is-multiline">
+      <% @liste_legumineuses.each do |offer| %>
+        <div class="column is-one-third">
+          <div class="product-card w-inline-block">
+              <div class="product-card-image-wrapper"><img width="99" src="https://uploads-ssl.webflow.com/5d7e3127cad5177918ca3737/5d7e49b0a3db08f53036d9b4_lemon.svg" alt=""></div>
+              <div class="card-content">
+                <h4 class="product-card-heading"><%=Product.find(offer.product_id).prod_name%></h4>
+                <h6 class="paragraph-2">Quantité renstante: <%=offer.offer_quantity %>kg</h6>
+                <h6 class="paragraph-2 bold">Prix : <%=offer.offer_price %> FCFA/kg</h6>
+                <a href="<%=new_offer_transaction_path(offer.id)%>" role="button" class="button is-primary is-outlined">Voir les détails</a>
+              </div>
+          </div>     
+        </div>
+      <%end%> 
+      </div>  
+    </div>
+
+    <div id="céréales" class="columns w-row tabcontent">
+      <div class="columns  is-multiline">
+      <% @liste_cereales.each do |offer| %>
+        <div class="column is-one-third">
+          <div class="product-card w-inline-block">
+              <div class="product-card-image-wrapper"><img width="99" src="https://uploads-ssl.webflow.com/5d7e3127cad5177918ca3737/5d7e49b0a3db08f53036d9b4_lemon.svg" alt=""></div>
+              <div class="card-content">
+                <h4 class="product-card-heading"><%=Product.find(offer.product_id).prod_name%></h4>
+                <h6 class="paragraph-2">Quantité renstante: <%=offer.offer_quantity %>kg</h6>
+                <h6 class="paragraph-2 bold">Prix : <%=offer.offer_price %> FCFA/kg</h6>
+                <a href="<%=new_offer_transaction_path(offer.id)%>" role="button" class="button is-primary is-outlined">Voir les détails</a>
+              </div>
+          </div>     
+        </div>
+      <%end%> 
+      </div>  
+    </div>
+
+    <div id="fruits" class="columns w-row tabcontent">
+      <div class="columns  is-multiline">
+      <% @liste_fruits.each do |offer| %>
+        <div class="column is-one-third">
+          <div class="product-card w-inline-block">
+              <div class="product-card-image-wrapper"><img width="99" src="https://uploads-ssl.webflow.com/5d7e3127cad5177918ca3737/5d7e49b0a3db08f53036d9b4_lemon.svg" alt=""></div>
+              <div class="card-content">
+                <h4 class="product-card-heading"><%=Product.find(offer.product_id).prod_name%></h4>
+                <h6 class="paragraph-2">Quantité renstante: <%=offer.offer_quantity %>kg</h6>
+                <h6 class="paragraph-2 bold">Prix : <%=offer.offer_price %> FCFA/kg</h6>
+                <a href="<%=new_offer_transaction_path(offer.id)%>" role="button" class="button is-primary is-outlined">Voir les détails</a>
+              </div>
+          </div>     
+        </div>
+      <%end%> 
+      </div>  
+    </div>
+
+
+</div>
+
+ 
