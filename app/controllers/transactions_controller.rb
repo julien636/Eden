@@ -12,7 +12,7 @@ class TransactionsController < ApplicationController
 
   def create
     @offer=offer
-    farmer = offer.farmer
+    farmer = @offer.farmer
     transaction_params = params[:transaction]
     @newtransaction = Transaction.new(transa_adress: @offer.offer_adress,transa_zipcode: @offer.offer_zipcode, transa_quantity: transaction_params[:transa_quantity], transa_date: transaction_params[:transa_date], buyer_id: current_buyer.id, offer_id: params[:offer_id],transa_city: @offer.offer_city,transa_confirmation:false )
 
