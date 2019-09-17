@@ -34,6 +34,10 @@ class MessagesController < ApplicationController
      fourth_message
     end
 
+    if count == 4
+     fifth_message
+    end
+
   end
 
   def is_registered
@@ -178,7 +182,38 @@ class MessagesController < ApplicationController
     farmer.save
   end
 
+  def fifth_message
+    message_body = params["Body"]
+    from_number = params["From"]
+    offerid = message_body[1..-1].to_i
+    farmer = Farmer.find_by(phone_number: from_number)
+    transa = Transaction.find_by(offer_id: offerid)
+    if message_body.downcase.include?("y")
+      boot_twilio
+      @client.messages.create ({
+        from: Rails.application.credentials.twilio_number,
+        to: from_number,
+        body: "L'offre d'achat a bien été acceptée, l'acheteur va prendre contact avec vous pour les modalités de rendez-vous. Ecrire Allo pour ajouter une nouvelle offre"
+      })
+      transa.transa_confirmation = true
+      transa.save
+      farmer.count = 0
+      farmer.save
+    elsif message_body.downcase.include?("n")
+      boot_twilio
+      @client.messages.create ({
+        from: Rails.application.credentials.twilio_number,
+        to: from_number,
+        body: "L'offre d'achat a été déclinée. Ecrire Allo pour ajouter une nouvelle offre"
+      })
+      transa.transa_confirmation = false
+      transa.save
+      farmer.count = 0
+      farmer.save
+    else 
 
+    end
+  end
 
   private
  
