@@ -1,29 +1,54 @@
-<h1>Mon profil</h1>
 
-Prénom : <%= current_buyer.first_name%><br/>
-Nom : <%= current_buyer.last_name%><br/>
-Zipcode : <%= current_buyer.buyer_zipcode%><br/>
-Adresse : <%= current_buyer.buyer_adress%><br/>
-Ville : <%= current_buyer.buyer_city%><br/>
-Pays : <%= current_buyer.buyer_country%><br/>
-Notation : <%= current_buyer.buyer_rating%>/5<br/>
+<div></div>
+  <div class="section-5">
+    <div class="container-2 w-container">
+      <div class="product">
+        <div class="product-info">
+          <h1 class="heading-3"><%= current_buyer.first_name%> <%= current_buyer.last_name%></h1>
+          <p class="text-grey"><%= current_buyer.buyer_adress%>, <%= current_buyer.buyer_zipcode%>, <%= current_buyer.buyer_city%> -<%= current_buyer.buyer_country%></p>
+          <a href="<%=edit_buyer_path%>" class="button small ghost w-button">Editer le profil</a>
+          <br/>
+          <a href="<%=edit_buyer_registration_path%>" class="text-grey">Modifier compte</a>
 
-<a href="<%=edit_buyer_path%>">Editer le profil</a>
-<a href="<%=edit_buyer_registration_path%>">Editer email/password</a>
+      </div>
+    </div>
+</div>
 
-<h1>Transaction en cours :</h1>
-<%current_buyer.transactions.each do |transa|%>
-  <p>Produit : <%=transa.offer.product.prod_name%>
-  <p>Adress : <%=transa.transa_adress%></p>
-  <p>Zipcode : <%=transa.transa_zipcode%></p>
-  <p>Ville : <%=transa.transa_city%></p>
-  <p>Quantité : <%=transa.transa_quantity%> kg</p>
-  <p>Date de rencontre : <%=transa.transa_date%></p>
-  <%if transa.transa_confirmation == false %>
-    <p>En attente confirmation producteur</p>
-  <%else%>
-    <p>Commande confirmé</p>
-  <%end%>
-  <a href="<%=offer_transaction_path(transa.offer.id, transa.id)%>" role="button">Voir</a><br/><br/>
+<div class="container w-container">
+    <div class="wrapper">
+      <div class="shop-header">
+        <h3 class="heading-7">Commandes en cours</h3>
+        <div class="shop-header-line">
+          <div class="shop-header-color"></div>
+        </div>
+      </div>
+    </div>
 
-<%end%>
+    <div class="columns w-row tabcontent">
+      <div class="columns  is-multiline">
+      <%current_buyer.transactions.each do |transa|%>
+        <div class="column is-one-third">
+          <div class="product-card w-inline-block">
+              <div class="product-card-image-wrapper"><img width="99" src="https://uploads-ssl.webflow.com/5d7e3127cad5177918ca3737/5d7e49b0a3db08f53036d9b4_lemon.svg" alt=""></div>
+              <div class="card-content">
+                <h4 class="product-card-heading"><%=transa.offer.product.prod_name%></h4>
+                <h6 class="paragraph-2">Quantité commandée: <%=transa.transa_quantity%>kg</h6>
+                <%if transa.transa_confirmation == false %>
+                  <p class="text-grey">En attente confirmation producteur</p>
+                <%else%>
+                  <p class="text-grey">Commande confirmé</p>
+                <%end%>
+                  <a href="<%=offer_transaction_path(transa.offer.id, transa.id)%>" role="button" class="button is-primary is-outlined">Voir les détails</a><br/><br/>
+              </div>
+          </div>     
+        </div>
+      <%end%> 
+      </div>  
+    </div>
+  </div>  
+
+<br/>
+
+
+
+
