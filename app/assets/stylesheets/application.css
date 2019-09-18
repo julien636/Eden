@@ -2232,7 +2232,7 @@
   }
   
   .button {
-    height: 48px;
+    height: 30px;
     padding: 12px 28px;
     -webkit-box-pack: center;
     -webkit-justify-content: center;
@@ -3038,19 +3038,47 @@
   }
 
   
-  #légumes {
+  #vegetables_id {
     display: block;
   }
 
-  #légumineuses {
+  #legumes_id {
     display: none;
   }
 
-  #céréales {
+  #cereals_id {
     display: none;
   }
 
-  #fruits {
+  #fruits_id {
     display: none;
+  }
+
+  .tag {
+    
+    -webkit-transition: box-shadow 300ms ease, -webkit-transform 300ms ease;
+    transition: box-shadow 300ms ease, -webkit-transform 300ms ease;
+    transition: transform 300ms ease, box-shadow 300ms ease;
+    transition: transform 300ms ease, box-shadow 300ms ease, -webkit-transform 300ms ease;
+    font-family: Rubik, sans-serif;
   }
   
+  .tag:hover {
+    box-shadow: 0 8px 8px -4px rgba(0, 0, 0, 0.11);
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+
+  .select.is-primary {
+    max-height: 25px;
+    max-width: 30%;
+    padding-right: 0px;
+    padding-left: 25px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #00D1B2;
+    border-radius: 7px;
+    font-family: Rubik, sans-serif;
+    
+  }
