@@ -1,6 +1,7 @@
 require 'time'
 class MessagesController < ApplicationController
   skip_before_action :verify_authenticity_token
+  after_fifth_message:
 
   def start
     #If the number which is sending a sms is not in the database, an sms is sent to create an account
@@ -199,6 +200,7 @@ class MessagesController < ApplicationController
       transa.save
       farmer.count = 0
       farmer.save
+      BuyerMailer.confirmation_send(transa.buyer,transa).deliver_now
     elsif message_body.downcase.include?("n")
       boot_twilio
       @client.messages.create ({

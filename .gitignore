@@ -28,4 +28,6 @@ credentials.yml.enc
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+
+# Ignore APIkey.
 .env
