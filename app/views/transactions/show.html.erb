@@ -1,14 +1,18 @@
-<p>Produit : <%=@transaction.offer.product.prod_name%></p>
-<p>Adress : <%=@transaction.transa_adress%></p>
-<p>Zipcode : <%=@transaction.transa_zipcode%></p>
-<p>Ville : <%=@transaction.transa_city%></p>
-<p>Quantité : <%=@transaction.transa_quantity%> kg</p>
-<p>Date de rencontre : <%=@transaction.transa_date%></p>
-
-<a href="<%=edit_offer_transaction_path(@transaction.offer.id, @transaction.id)%>" role="button">Editer</a><br/><br/>
-
-
-
+ <div></div>
+  <div class="section-4">
+    <div class="container-2 w-container">
+      <div class="product">
+        <div class="product-info">
+          <h1 class="heading-3"><%=@transaction.offer.product.prod_name%></h1>
+          <p class="text-grey"><br>‍<br>Date de la récolte : <%=@offer.date_harvest %><br><br>
+          Date de rencontre : <%=@transaction.transa_date%><br><br>
+          Lieu de l'échange : <%=@transaction.transa_adress%>, <%=@transaction.transa_city%>, <%=@transaction.transa_zipcode%><br>‍<br>
+          Quantité achetée: <%=@transaction.transa_quantity%>kg</p>
+        </div>
+        <div class="product-image-wrapper"><img src="https://uploads-ssl.webflow.com/5d7e3127cad5177918ca3737/5d7e49b0a3db08f53036d9b4_lemon.svg" alt="" class="full-width"></div>
+      </div>
+    </div>
+  </div>
 
 
 
