@@ -1,0 +1,49 @@
+<% if @transactions.size > 0 %>
+	<% @transactions.each do |item| %>
+		<div class="card">
+		<header class="card-header">
+		  <p class="card-header-title">
+			<h3><%= item.offer.product.prod_name %> #<%= item.offer.id%> :
+
+			<%= (item.offer.offer_price * item.transa_quantity)/10%>€</h3>
+		  </p>
+		  <a link_to ="#" class="card-header-icon" aria-label="more options">
+			<span class="icon">
+			  <i class="fas fa-angle-down" aria-hidden="true"></i>
+			</span>
+		  </a>
+		</header>
+		<div class="card-content">
+			<div class="pull-left">
+				<div class="offer-recap">
+					<h4> Offer Recap </h4>
+					<ul> Adress : <%= item.offer.offer_adress%></ul>
+					<ul> Zipcode : <%= item.offer.offer_zipcode%></ul>
+					<ul> City : <%= item.offer.offer_city %></ul>
+					<ul> Country : <%= item.offer.offer_country %></ul>
+					<ul> Harvest Date : <%=item.offer.date_harvest%></ul>
+				</div>
+			</div>
+			<div class ="pull-right">
+				<div class="transa-recap">
+					<h4> Transaction Recap </h4>
+					<ul> Adress : <%= item.transa_adress%></ul>
+					<ul> Zipcode : <%= item.transa_zipcode%></ul>
+					<ul> Quantity : <%= item.transa_quantity%></ul>
+					<ul> Date : <%= item.transa_date%></ul>
+					<ul> City : <%= item.transa_city%></ul>
+					<ul> Confirmation state : <%= item.transa_confirmation%></ul>
+				</div>
+			</div>
+	  <footer class="card-footer">
+		<a href="#" class="card-footer-item">Save</a>
+		<a href="#" class="card-footer-item">Edit</a>
+		<a href="#" class="card-footer-item">Delete</a>
+	  </footer>
+	</div>
+	  </div>
+	<% end %>
+	<h2><%= render "carts/stripe" %></h1>
+<% else %>
+	
+<% end %>

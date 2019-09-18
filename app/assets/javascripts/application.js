@@ -1,3 +1,7 @@
+//= require rails-ujs
+//= require activestorage
+//= require turbolinks
+//= require_tree .
 /*!
  * Webflow: Front-end site library
  * @license MIT

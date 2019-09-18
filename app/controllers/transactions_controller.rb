@@ -14,12 +14,12 @@ class TransactionsController < ApplicationController
     @offer=offer
     farmer = @offer.farmer
     transaction_params = params[:transaction]
-    @newtransaction = Transaction.new(transa_adress: @offer.offer_adress,transa_zipcode: @offer.offer_zipcode, transa_quantity: transaction_params[:transa_quantity], transa_date: transaction_params[:transa_date], buyer_id: current_buyer.id, offer_id: params[:offer_id],transa_city: @offer.offer_city,transa_confirmation:false )
+    @newtransaction = Transaction.new(transa_adress: @offer.offer_adress,transa_zipcode: @offer.offer_zipcode, transa_quantity: transaction_params[:transa_quantity], transa_date: transaction_params[:transa_date], buyer_id: current_buyer.id, offer_id: params[:offer_id],transa_city: @offer.offer_city,transa_confirmation:false,payment_confirmation:false )
 
     if @newtransaction.save 
       new_quantity=@offer.offer_quantity-@newtransaction.transa_quantity
       @offer.update(:offer_quantity => new_quantity)
-      flash[:notice] = "Produit acheté, en attente confirmation producteur"
+      flash[:notice] = "Produit commandé, en attente confirmation producteur"
       redirect_to root_path
 
       
