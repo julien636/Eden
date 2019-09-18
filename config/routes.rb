@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resource :messages do
     collection do
       post 'start'
+      post 'confirm'
     end
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_18_134207) do
+ActiveRecord::Schema.define(version: 2019_09_18_160414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2019_09_18_134207) do
     t.string "buyer_adress"
     t.string "buyer_city"
     t.string "buyer_country"
-    t.string "buyer_rating_number"
+    t.string "buyer_rating_number", default: "0"
     t.string "buyer_rating"
     t.index ["email"], name: "index_buyers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_buyers_on_reset_password_token", unique: true
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 2019_09_18_134207) do
     t.string "transa_city"
     t.boolean "transa_confirmation"
     t.boolean "payment_confirmation"
+    t.integer "confirmation_code"
     t.index ["buyer_id"], name: "index_transactions_on_buyer_id"
     t.index ["offer_id"], name: "index_transactions_on_offer_id"
   end

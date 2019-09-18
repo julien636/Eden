@@ -1,7 +1,6 @@
 require 'time'
 class MessagesController < ApplicationController
   skip_before_action :verify_authenticity_token
-  after_fifth_message:
 
   def start
     #If the number which is sending a sms is not in the database, an sms is sent to create an account
@@ -39,6 +38,39 @@ class MessagesController < ApplicationController
      fifth_message
     end
 
+    if count == 5
+      sixth_message
+    end
+
+    if count == 6
+      seventh_message
+    end
+
+  end
+
+  def confirm
+    buyer_number = params["From"]
+    message_body = params["Body"]
+    transaction = Transaction.find(message_body.to_i)
+    farmer = transaction.offer.farmer
+    farmer_number = transaction.offer.farmer.phone_number
+    code = rand(10000..99999)
+    transaction.confirmation_code = code
+    transaction.save
+
+    boot_twilio
+    @client.messages.create ({
+      from: Rails.application.credentials.twilio_number2,
+      to: buyer_number,
+      body: "Bonjour, pour confirmer la transaction veuillez transmettre le code #{code} à l'acheteur"
+    })
+    @client.messages.create ({
+      from: Rails.application.credentials.twilio_number,
+      to: farmer_number,
+      body: "Veuillez entrer le n° de transaction suivi du code de l'acheteur à 5 chiffres pour confirmer la transaction. Ex: #{transaction.id},23345"
+    })
+    farmer.count = 5
+    farmer.save
   end
 
   def is_registered
@@ -217,6 +249,52 @@ class MessagesController < ApplicationController
     end
   end
 
+  def sixth_message
+    message_body = params["Body"]
+    from_number = params["From"]
+    farmer = Farmer.find_by(phone_number: from_number)
+    transaction = Transaction.find(message_body.split(",")[0].to_i)
+    buyer = transaction.buyer
+    if transaction.confirmation_code.to_i == message_body.split(",")[1].to_i
+      #### lancer le paiment du farmer via sms
+      boot_twilio
+      @client.messages.create ({
+        from: Rails.application.credentials.twilio_number,
+        to: from_number,
+        body: "Code de confirmation correct, vous allez recevoir le paiment très bientôt. Veuillez attribuer une note entre 1 et 5 pour l'acheteur n°#{buyer.id}. Ex: #{buyer.id},4"
+      })
+      farmer.count = 6
+      farmer.save
+    else 
+      boot_twilio
+      @client.messages.create ({
+        from: Rails.application.credentials.twilio_number,
+        to: from_number,
+        body: "Code de confirmation incorrect, veuillez réessayer:"
+      })
+      farmer.count = 5
+      farmer.save
+    end
+
+    def seventh_message
+      from_number = params["From"]
+      message_body = params["Body"]
+      farmer = Farmer.find_by(phone_number: from_number)
+      buyer = Buyer.find(message_body.split(",")[0].to_i)
+      buyer.buyer_rating = message_body.split(",")[1].to_i
+      buyer.buyer_rating_number = buyer.buyer_rating_number.to_i + 1
+      buyer.save
+      boot_twilio
+      @client.messages.create ({
+        from: Rails.application.credentials.twilio_number,
+        to: from_number,
+        body: "Note enregistrée, pour publier une nouvelle offre veuillez écrire allo"
+      })
+      farmer.count = 0
+      farmer.save
+    end
+    
+  end
   private
  
   def boot_twilio
