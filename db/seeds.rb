@@ -31,7 +31,7 @@ end
 
 10.times do 
     i=rand(1..10)
-    Transaction.create(transa_adress:Farmer.find(i).farmer_adress, transa_zipcode:Farmer.find(i).farmer_zipcode, transa_quantity:rand(1..100), buyer_id:rand(1..10), offer_id:rand(1..10),transa_city:"Dakar",transa_confirmation:false)
+    Transaction.create(transa_adress:Farmer.find(i).farmer_adress, transa_zipcode:Farmer.find(i).farmer_zipcode, transa_quantity:rand(1..100), buyer_id:rand(1..10), offer_id:rand(1..10),transa_city:"Dakar",transa_confirmation:false,payment_confirmation:false)
 end
 
 

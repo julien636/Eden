@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
+
 gem 'twilio-ruby'
 
 
@@ -65,3 +66,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'table_print', '~> 1.5', '>= 1.5.6'
 gem 'faker'
+
+# Checkout API
+gem 'stripe'
