@@ -23,14 +23,6 @@ class TransactionsController < ApplicationController
       redirect_to root_path
 
       
-      boot_twilio
-      @client.messages.create ({
-        from: Rails.application.credentials.twilio_number,
-        to: @offer.farmer.phone_number,
-        body: "Un acheteur souhaite #{@offer.offer_quantity}kilos de #{@offer.product.prod_subname} pour #{@offer.offer_price} par kilo. Pour accepter tapez Y#{@offer.id} pour refuser tapez N#{@offer.id}"
-      })
-     farmer.count = 4
-     farmer.save
     else
       render 'new'
     end
@@ -48,8 +40,6 @@ class TransactionsController < ApplicationController
   end
 
   def update
-    @transaction=transaction
-    @offer=offer
     if @transaction.update(transaction_update)
       flash[:notice] = "Transaction successfully update"
       redirect_to buyer_path(current_buyer.id)
@@ -85,13 +75,7 @@ class TransactionsController < ApplicationController
     end
   end
 
-  private
- 
-  def boot_twilio
-    account_sid = Rails.application.credentials.twilio_sid
-    auth_token = Rails.application.credentials.twilio_token
-    @client = Twilio::REST::Client.new account_sid, auth_token
-  end
+
 
   
 end
