@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Bonjour <%= @buyer.first_name %>, votre commande a bien été validée</h1>
+    <p>
+      Produit : <%=@transaction.offer.product.prod_name%>
+      Quantité : <%=@transaction.transa_quantity%> kg
+      Lieu de rendez-vous : <%=@transaction.transa_adress%> à <%=@transaction.transa_city%>
+      Le : <%=@transaction.transa_date%>
+    </p>
+    <p>
+      Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
+    </p>
+    <p> À très vite sur Eden !
+  </body>
+</html>
