@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :transactions
   end
   resources :buyers, only: [:show, :edit, :update]
+  get "/fetch_offers" => 'offers#from_category', as: 'fetch_offers'
 
   resource :messages do
     collection do

@@ -20,76 +20,43 @@
     </div>
    <br/>
 
+
     <div id="légumes" class="columns w-row tabcontent">
-      <div class="columns  is-multiline">
-      <% @liste_legumes.each do |offer| %>
-        <div class="column is-one-third">
-          <div class="product-card w-inline-block">
-              <div class="product-card-image-wrapper"><img width="99" src="https://uploads-ssl.webflow.com/5d7e3127cad5177918ca3737/5d7e49b0a3db08f53036d9b4_lemon.svg" alt=""></div>
-              <div class="card-content">
-                <h4 class="product-card-heading"><%=Product.find(offer.product_id).prod_name%></h4>
-                <h6 class="paragraph-2">Quantité renstante: <%=offer.offer_quantity %>kg</h6>
-                <h6 class="paragraph-2 bold">Prix : <%=offer.offer_price %> FCFA/kg</h6>
-                <a href="<%=new_offer_transaction_path(offer.id)%>" role="button" class="button is-primary is-outlined">Voir les détails</a>
-              </div>
-          </div>     
-        </div>
-      <%end%> 
-      </div>  
+      <%= form_tag(fetch_offers_path(format: :js),:method => :get ,:remote => true) do %>
+        <%= select_tag "category", options_from_collection_for_select(@sub_vegetables, "id", "prod_name"),  { :include_blank => true , :class => "product_select"} %>
+        <%= submit_tag 'Filter' %>
+      <% end %> <br/>
+
+      <%= render partial: 'vegetables_list' %>  
     </div>
 
     <div id="légumineuses" class="columns w-row tabcontent">
-      <div class="columns  is-multiline">
-      <% @liste_legumineuses.each do |offer| %>
-        <div class="column is-one-third">
-          <div class="product-card w-inline-block">
-              <div class="product-card-image-wrapper"><img width="99" src="https://uploads-ssl.webflow.com/5d7e3127cad5177918ca3737/5d7e49b0a3db08f53036d9b4_lemon.svg" alt=""></div>
-              <div class="card-content">
-                <h4 class="product-card-heading"><%=Product.find(offer.product_id).prod_name%></h4>
-                <h6 class="paragraph-2">Quantité renstante: <%=offer.offer_quantity %>kg</h6>
-                <h6 class="paragraph-2 bold">Prix : <%=offer.offer_price %> FCFA/kg</h6>
-                <a href="<%=new_offer_transaction_path(offer.id)%>" role="button" class="button is-primary is-outlined">Voir les détails</a>
-              </div>
-          </div>     
-        </div>
-      <%end%> 
-      </div>  
+      <%= form_tag(fetch_offers_path(format: :js),:method => :get ,:remote => true) do %>
+        <%= select_tag "category", options_from_collection_for_select(@sub_legumes, "id", "prod_name"),  { :include_blank => true , :class => "product_select"} %>
+        <%= submit_tag 'Filter' %>
+      <% end %> <br/>
+
+      <%= render partial: 'legumes_list' %> 
     </div>
+    
 
     <div id="céréales" class="columns w-row tabcontent">
-      <div class="columns  is-multiline">
-      <% @liste_cereales.each do |offer| %>
-        <div class="column is-one-third">
-          <div class="product-card w-inline-block">
-              <div class="product-card-image-wrapper"><img width="99" src="https://uploads-ssl.webflow.com/5d7e3127cad5177918ca3737/5d7e49b0a3db08f53036d9b4_lemon.svg" alt=""></div>
-              <div class="card-content">
-                <h4 class="product-card-heading"><%=Product.find(offer.product_id).prod_name%></h4>
-                <h6 class="paragraph-2">Quantité renstante: <%=offer.offer_quantity %>kg</h6>
-                <h6 class="paragraph-2 bold">Prix : <%=offer.offer_price %> FCFA/kg</h6>
-                <a href="<%=new_offer_transaction_path(offer.id)%>" role="button" class="button is-primary is-outlined">Voir les détails</a>
-              </div>
-          </div>     
-        </div>
-      <%end%> 
-      </div>  
+      <%= form_tag(fetch_offers_path(format: :js),:method => :get ,:remote => true) do %>
+        <%= select_tag "category", options_from_collection_for_select(@sub_cereals, "id", "prod_name"),  { :include_blank => true , :class => "product_select"} %>
+        <%= submit_tag 'Filter' %>
+      <% end %> <br/>
+
+       <%= render partial: 'cereals_list' %>
+
     </div>
 
     <div id="fruits" class="columns w-row tabcontent">
-      <div class="columns  is-multiline">
-      <% @liste_fruits.each do |offer| %>
-        <div class="column is-one-third">
-          <div class="product-card w-inline-block">
-              <div class="product-card-image-wrapper"><img width="99" src="https://uploads-ssl.webflow.com/5d7e3127cad5177918ca3737/5d7e49b0a3db08f53036d9b4_lemon.svg" alt=""></div>
-              <div class="card-content">
-                <h4 class="product-card-heading"><%=Product.find(offer.product_id).prod_name%></h4>
-                <h6 class="paragraph-2">Quantité renstante: <%=offer.offer_quantity %>kg</h6>
-                <h6 class="paragraph-2 bold">Prix : <%=offer.offer_price %> FCFA/kg</h6>
-                <a href="<%=new_offer_transaction_path(offer.id)%>" role="button" class="button is-primary is-outlined">Voir les détails</a>
-              </div>
-          </div>     
-        </div>
-      <%end%> 
-      </div>  
+      <%= form_tag(fetch_offers_path(format: :js),:method => :get ,:remote => true) do %>
+        <%= select_tag "category", options_from_collection_for_select(@sub_fruits, "id", "prod_name"),  { :include_blank => true , :class => "product_select"} %>
+        <%= submit_tag 'Filter' %>
+      <% end %> <br/>
+
+      <%= render partial: 'fruits_list' %> 
     </div>
 
 
