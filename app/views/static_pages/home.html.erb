@@ -1,5 +1,78 @@
-<h1>StaticPages#home</h1>
-<p>Bienvenue sur Eden, la marketplace pour l'agroculture</p>
-  <% if current_buyer%>
-    <%= link_to "Accéder aux offres", offers_path %><br />
-  <%end%>
+
+<head> 
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+</head>
+
+<body>
+  <section class="header-08">
+    <div class="hero-body">
+      <div class="columns is-flex">
+        <div class="column is-two-thirds">
+            <h1 class="heading-6 landing_title has-text-left">Petits agriculteurs,<br/> grandes ambitions</h1>
+            <h4 class="subtitle_landing landing_title has-text-left">La marketplace qui donne de la visibilité aux agriculteurs locaux</h2>
+        </div>
+        <div class="column">  
+          <%= image_tag "hero_perso.svg"%>
+        </div> 
+      </div>   
+
+    </div>
+  </section>
+
+
+
+    <div class="section_01">
+      <div class="container_p">
+        <div class="col_40">
+          <h1 class="h1_example">40% de pertes <br>post-récolte en Afrique</h1>
+          <p class="paragraph space_below">Ces pertes sont dues à une asymétrie d&#x27;informations entre grossistes et producteurs, ces derniers n&#x27;ayant pas Internet. <br><strong>Eden souhaite les connecter, via donné SMS, au monde extérieur.</strong></p>
+        </div>
+        <div class="col_60">
+          <div class="card_row">
+
+            <div data-w-id="d9bf0bc1-9bac-5fa1-5c55-71ac35646879" class="product-card">
+              <div class="icon_wrap">
+                <%= image_tag "sms.svg"%>
+              </div>
+              <div class="card_title_wrap">
+                <h1 class="h1_features-2">Un chatbot SMS pour les agriculteurs locaux<br></h1>
+                <div class="text_features">Les agriculteurs locaux, sans accès Internet, publient via un Chatbot-SMS leurs rendements.</div>
+              </div>
+            </div><br/>
+
+            <div data-w-id="31696d6a-3887-3888-4b5f-0a0c096c7866" class="product-card">
+              <div class="icon_wrap">
+              <%= image_tag "network.svg"%>
+              </div>
+              <div class="card_title_wrap">
+                <h1 class="h1_features-2">Nous connectons ainsi, les producteurs locaux aux grossistes<br></h1>
+              </div>
+            </div>
+          </div><br/>
+
+          <div class="card_col_2">
+            <div data-w-id="0839fb79-9077-8c8f-fccc-44089ed3a19c" class="product-card">
+              <div class="icon_wrap">
+              <%= image_tag "online-shop.svg"%>
+              </div>
+              <div class="card_title_wrap">
+                <h1 class="h1_features-2">Une marketplace pour les grossistes<br></h1>
+                <div class="text_features">Ces données SMS sont ensuite traitées puis publiées sur une marketplace pour les grossistes.</div>
+              </div>
+            </div><br/>
+
+            <div data-w-id="6386f079-c902-dc83-7914-1a7a18f1c11f" class="product-card">
+              <div class="icon_wrap">
+              <%= image_tag "online-shop.svg"%>
+              </div>
+              <div class="card_title_wrap">
+                <h1 class="h1_features-2">Et nous réduisons <br>les Pertes Post-Récoltes<br></h1>
+              </div>
+            </div><br/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</body>
+
