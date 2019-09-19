@@ -18,7 +18,7 @@
         "><a>Fruits</a></li>
       </ul>
     </div>
-   <br/>
+    <br/>
 
     <div id="vegetables_id" class="columns w-row tabcontent">
       <%= form_tag(fetch_offers_path(format: :js),:method => :get ,:remote => true) do %>
@@ -34,7 +34,7 @@
         <%= select_tag "category", options_from_collection_for_select(@sub_legumes, "id", "prod_name"),  { :include_blank => true , :class => "select is-primary"} %>
         <%= submit_tag 'Filtrer', :class => "tag is-primary" %>
       <% end %> <br/>
-
+      <br/><br/>  
       <%= render partial: 'legumes_list' %> 
     </div>
     
@@ -44,7 +44,7 @@
         <%= select_tag "category", options_from_collection_for_select(@sub_cereals, "id", "prod_name"),  { :include_blank => true , :class => "select is-primary"} %>
         <%= submit_tag 'Filtrer', :class => "tag is-primary" %>
       <% end %> <br/>
-
+      <br/><br/>
        <%= render partial: 'cereals_list' %>
 
     </div>
@@ -54,7 +54,7 @@
         <%= select_tag "category", options_from_collection_for_select(@sub_fruits, "id", "prod_name"),  { :include_blank => true , :class => "select is-primary"} %>
         <%= submit_tag 'Filtrer', :class => "tag is-primary" %>
       <% end %> <br/>
-
+      <br/><br/>
       <%= render partial: 'fruits_list' %> 
     </div>
 

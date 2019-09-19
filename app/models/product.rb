@@ -7,7 +7,7 @@ class Product < ApplicationRecord
     end
 
     def self.legume_prod
-        category = self.where(prod_category: "LEGUMES")
+        category = self.where(prod_category: "LEGUME")
         return category
     end
 
