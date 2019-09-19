@@ -52,3 +52,7 @@ function openTab(event, tabId) {
 
 }
 
+function hideOnClick() {
+    $('div#hideonclick').hide();
+  }; 
+

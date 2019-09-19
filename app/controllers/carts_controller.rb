@@ -16,16 +16,16 @@ class CartsController < ApplicationController
         @transactions.each do |transa|
             transa.update(payment_confirmation:true)
 
-            boot_twilio
-            @client.messages.create ({
-              from: Rails.application.credentials.twilio_number,
-              to: transa.offer.farmer.phone_number,
-              body: "Un acheteur souhaite #{transa.offer.offer_quantity}kilos de #{transa.offer.product.prod_subname} pour #{transa.offer.offer_price} par kilo. Pour accepter tapez Y#{transa.offer.id} pour refuser tapez N#{transa.offer.id}"
-            })
-           transa.offer.farmer.count = 4
-           transa.offer.farmer.save
+          #   boot_twilio
+          #   @client.messages.create ({
+          #     from: Rails.application.credentials.twilio_number,
+          #     to: transa.offer.farmer.phone_number,
+          #     body: "Un acheteur souhaite #{transa.offer.offer_quantity}kilos de #{transa.offer.product.prod_subname} pour #{transa.offer.offer_price} par kilo. Pour accepter tapez Y#{transa.offer.id} pour refuser tapez N#{transa.offer.id}"
+          #   })
+          #  transa.offer.farmer.count = 4
+          #  transa.offer.farmer.save
         end
-
+        flash[:primary] = "Produit(s) commandé(s), en attente confirmation producteur"
     end
 
     private
@@ -46,10 +46,13 @@ class CartsController < ApplicationController
         customer: customer.id,
         amount: @price_paid.to_i,
         description: 'Rails Stripe customer',
-        currency: 'eur',})
 
-      rescue Stripe::CardError => e
-        flash[:error] = e.message
-        redirect_to carts_path
-      end
+        currency: 'eur',
+      })
+    
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to cart_path(current_buyer.id)
+    end
+
 end
