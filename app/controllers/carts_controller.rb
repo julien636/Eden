@@ -10,6 +10,7 @@ class CartsController < ApplicationController
 
     def create
         @price_paid=$total_price
+        boot_stripe
         $total_price=0
         @transactions = current_buyer.transactions.where(payment_confirmation:false)
         @transactions.each do |transa|
@@ -34,4 +35,21 @@ class CartsController < ApplicationController
       auth_token = Rails.application.credentials.twilio_token
       @client = Twilio::REST::Client.new account_sid, auth_token
     end
+
+
+    def boot_stripe
+      customer = Stripe::Customer.create({
+        email: params[:stripeEmail],
+        source: params[:stripeToken],})
+
+      charge = Stripe::Charge.create({
+        customer: customer.id,
+        amount: @price_paid.to_i,
+        description: 'Rails Stripe customer',
+        currency: 'eur',})
+
+      rescue Stripe::CardError => e
+        flash[:error] = e.message
+        redirect_to carts_path
+      end
 end
