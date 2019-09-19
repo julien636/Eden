@@ -36,16 +36,17 @@ class CartsController < ApplicationController
       @client = Twilio::REST::Client.new account_sid, auth_token
     end
 
+
     def boot_stripe
       customer = Stripe::Customer.create({
         email: params[:stripeEmail],
-        source: params[:stripeToken],
-      })
-    
+        source: params[:stripeToken],})
+
       charge = Stripe::Charge.create({
         customer: customer.id,
         amount: @price_paid.to_i,
         description: 'Rails Stripe customer',
+
         currency: 'eur',
       })
     
@@ -53,4 +54,5 @@ class CartsController < ApplicationController
       flash[:error] = e.message
       redirect_to cart_path(current_buyer.id)
     end
+
 end
