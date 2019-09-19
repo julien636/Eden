@@ -1,10 +1,13 @@
 <%= render "devise/shared/error_messages", resource: resource %>
+<div class="section-5">
+<div class="container-2 w-container">
+<div class="product">
 <div class="container">
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <br><br><br>
       <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: "w-form" } do |f| %>
-        <h1 class="h3 mb-3 font-weight-normal text-center">Inscription</h1>
+        <h1 class="h3 mb-3 font-weight-normal text-center">Inscription sur Eden</h1></br></br>
         <div class="field">
         <%= f.label :email, "Email" %>
 
@@ -21,7 +24,7 @@
 
         </div>
 
-        
+
         <div class="field">
           <%= f.label :confirmation %>
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input" %>
@@ -34,8 +37,10 @@
           <%= f.submit "S'inscrire", class: "button small w-button" %>
         </div>
       <% end %>
-      <%= render "devise/shared/links" %>
     </div>
   </div>
+</div>
+</div>
+</div>
 </div>
 

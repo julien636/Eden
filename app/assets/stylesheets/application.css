@@ -5,6 +5,15 @@
  *    without disabling user zoom.
  */
 
+/** button
+*/
+
+.actions{
+  text-align: center;
+  align-content: center;
+}
+
+
 
 /** FOOTER
 */
