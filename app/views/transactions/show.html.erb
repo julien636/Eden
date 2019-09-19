@@ -1,4 +1,3 @@
- <div></div>
   <div class="section-4">
     <div class="container-2 w-container">
       <div class="product">
@@ -7,7 +6,9 @@
           <p class="text-grey"><br>‍<br>Date de la récolte : <%=@offer.date_harvest %><br><br>
           Date de rencontre : <%=@transaction.transa_date%><br><br>
           Lieu de l'échange : <%=@transaction.transa_adress%>, <%=@transaction.transa_city%>, <%=@transaction.transa_zipcode%><br>‍<br>
-          Quantité achetée: <%=@transaction.transa_quantity%>kg</p>
+          Quantité achetée: <%=@transaction.transa_quantity%>kg<br>‍<br>
+          Prix: <%=@transaction.transa_quantity*@offer.offer_price%>€</p>
+          <a href="<%=edit_offer_transaction_path(@offer.id)%>" role="button" class="button is-primary is-outlined">Editer</a>
         </div>
         <div class="product-image-wrapper"><img src="https://uploads-ssl.webflow.com/5d7e3127cad5177918ca3737/5d7e49b0a3db08f53036d9b4_lemon.svg" alt="" class="full-width"></div>
       </div>

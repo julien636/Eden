@@ -1,5 +1,3 @@
-
-<div></div>
   <div class="section-5">
     <div class="container-2 w-container">
       <div class="product">
@@ -9,12 +7,11 @@
           <a href="<%=edit_buyer_path%>" class="button small ghost w-button">Editer le profil</a>
           <br/>
           <a href="<%=edit_buyer_registration_path%>" class="text-grey">Modifier compte</a>
-
+        </div>
       </div>
-    </div>
-</div>
+  </div>
 
-<div class="container w-container">
+  <div class="container w-container">
     <div class="wrapper">
       <div class="shop-header">
         <h3 class="heading-7">Commandes en cours</h3>
@@ -27,27 +24,64 @@
     <div class="columns w-row tabcontent">
       <div class="columns  is-multiline">
       <%current_buyer.transactions.each do |transa|%>
-        <div class="column is-one-third">
-          <div class="product-card w-inline-block">
-              <div class="product-card-image-wrapper"><img width="99" src="https://uploads-ssl.webflow.com/5d7e3127cad5177918ca3737/5d7e49b0a3db08f53036d9b4_lemon.svg" alt=""></div>
-              <div class="card-content">
-                <h4 class="product-card-heading"><%=transa.offer.product.prod_name%></h4>
-                <h6 class="paragraph-2">Quantité commandée: <%=transa.transa_quantity%>kg</h6>
-                <%if transa.transa_confirmation == false %>
-                  <p class="text-grey">En attente confirmation producteur</p>
-                <%else%>
-                  <p class="text-grey">Commande confirmé</p>
-                <%end%>
-                  <a href="<%=offer_transaction_path(transa.offer.id, transa.id)%>" role="button" class="button is-primary is-outlined">Voir les détails</a><br/><br/>
-              </div>
-          </div>     
-        </div>
+        <%if transa.payment_confirmation ==true %>
+          <div class="column is-one-third">
+            <div class="product-card w-inline-block">
+                <div class="product-card-image-wrapper"><img width="99" src="https://uploads-ssl.webflow.com/5d7e3127cad5177918ca3737/5d7e49b0a3db08f53036d9b4_lemon.svg" alt=""></div>
+                <div class="card-content">
+                  <h4 class="product-card-heading"><%=transa.offer.product.prod_name%></h4>
+                  <h6 class="paragraph-2">Quantité commandée: <%=transa.transa_quantity%>kg</h6>
+                  <%if transa.transa_confirmation == false %>
+                    <p class="text-grey">En attente confirmation producteur</p>
+                  <%else%>
+                    <p class="text-grey">Commande confirmé par le producteur</p>
+                  <%end%>
+                    <a href="<%=offer_transaction_path(transa.offer.id, transa.id)%>" role="button" class="button is-primary is-outlined">Voir les détails</a><br/><br/>
+                </div>
+            </div>     
+          </div>
+        <%end%> 
       <%end%> 
       </div>  
     </div>
   </div>  
 
 <br/>
+
+  <div class="container w-container">
+    <div class="wrapper">
+      <div class="shop-header">
+        <h3 class="heading-7">Commandes passées</h3>
+        <div class="shop-header-line">
+          <div class="shop-header-color"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns w-row tabcontent">
+      <div class="columns  is-multiline">
+      <%current_buyer.transactions.each do |transa|%>
+        <%if transa.transa_confirmation==true && transa.payment_confirmation ==true%>
+          <div class="column is-one-third">
+            <div class="product-card w-inline-block">
+                <div class="product-card-image-wrapper"><img width="99" src="https://uploads-ssl.webflow.com/5d7e3127cad5177918ca3737/5d7e49b0a3db08f53036d9b4_lemon.svg" alt=""></div>
+                <div class="card-content">
+                  <h4 class="product-card-heading"><%=transa.offer.product.prod_name%></h4>
+                  <h6 class="paragraph-2">Quantité commandée: <%=transa.transa_quantity%>kg</h6>
+                  <%if transa.transa_confirmation == false %>
+                    <p class="text-grey">En attente confirmation producteur</p>
+                  <%else%>
+                    <p class="text-grey">Commande confirmé</p>
+                  <%end%>
+                    <a href="<%=offer_transaction_path(transa.offer.id, transa.id)%>" role="button" class="button is-primary is-outlined">Voir les détails</a><br/><br/>
+                </div>
+            </div>     
+          </div>
+        <%end%>
+      <%end%> 
+      </div>  
+    </div>
+  </div>  
 
 
 

@@ -20,13 +20,18 @@ class OffersController < ApplicationController
       end
     end
     respond_to do |format|
-      format.html {redirect_to root_path}
+      format.html {redirect_to offers_path}
       format.js
     end
   end
 
   def ram
-    @offers=Offer.all
+    @offers=[]
+    Offer.all.each do |off|
+      if off.offer_quantity > 0
+        @offers<<off
+      end
+    end
     @sub_cereals=Product.cereal_prod.to_a.uniq{ |o| o.prod_name}
     @sub_vegetables= Product.vegetable_prod.to_a.uniq{ |o| o.prod_name}
     @sub_legumes=Product.legume_prod.to_a.uniq{ |o| o.prod_name}

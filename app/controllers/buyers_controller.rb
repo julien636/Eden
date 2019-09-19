@@ -2,7 +2,6 @@ class BuyersController < ApplicationController
   before_action :authenticate_buyer!
 
   def show
-  
   end
   
   def edit
@@ -12,7 +11,7 @@ class BuyersController < ApplicationController
   def update
     @buyer = current_buyer
     if @buyer.update(buyer_update)
-      flash[:success] = "Profil succesfully updated"
+      flash[:success] = "Profil mis à jour"
       redirect_to @buyer
     else
       render 'edit'
