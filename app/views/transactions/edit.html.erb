@@ -1,11 +1,15 @@
-<ul>
-  <% if @transaction.errors.any? %>                      
-    <p>Nous n'avons pas réussi à modifier le potin pour la (ou les) raison(s) suivante(s) :</p>
-    <% @transaction.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  <% end %>
-</ul>
+
+  <ul>
+    <% if @transaction.errors.any? %>    
+      <div class="notification is-danger">                  
+        <p>Nous n'avons pas réussi à modifier le potin pour la (ou les) raison(s) suivante(s) :</p>
+        <% @transaction.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </div>
+    <% end %> 
+  </ul>
+
 <h1>Transactions#edit</h1>
 <p>Find me in app/views/transactions/edit.html.erb</p>
 

@@ -2,12 +2,15 @@ class TransactionsController < ApplicationController
   before_action :authenticate_buyer!
   before_action :is_buyer_transa?, only: [:edit]
 
-  def index
-  end
-
   def new
     @newtransaction=Transaction.new
     @offer=offer
+    @same_offers=[]
+    Offer.all.each do |offers|
+      if offers.product.prod_subname ==  @offer.product.prod_subname && offers!=@offer
+        @same_offers << offer
+      end
+    end
   end
 
   def create
@@ -19,10 +22,8 @@ class TransactionsController < ApplicationController
     if @newtransaction.save 
       new_quantity=@offer.offer_quantity-@newtransaction.transa_quantity
       @offer.update(:offer_quantity => new_quantity)
-      flash[:notice] = "Produit commandé, en attente confirmation producteur"
-      redirect_to root_path
-
-      
+      flash[:primary] = "Produit ajouté au panier"
+      redirect_to offers_path
     else
       render 'new'
     end
@@ -41,7 +42,7 @@ class TransactionsController < ApplicationController
 
   def update
     if @transaction.update(transaction_update)
-      flash[:notice] = "Transaction successfully update"
+      flash[:sucess] = "Panier mis à jour"
       redirect_to buyer_path(current_buyer.id)
     else
       render 'edit'
@@ -50,8 +51,16 @@ class TransactionsController < ApplicationController
 
   def destroy
     @transaction=transaction
-    @transaction.destroy
-    flash[:notice] = "Transaction successfully deleted"
+    if @transaction.payment_confirmation==true 
+      update_quantity
+      @transaction.destroy
+      #refund stripe
+      flash[:success] = "Transaction supprimée, vous serez remboursé d'ici quelques jours"
+    else
+      update_quantity
+      @transaction.destroy
+      flash[:success] = "Panier mis à jour"
+    end
     redirect_to buyer_path(current_buyer.id)
   end
 
@@ -69,13 +78,14 @@ class TransactionsController < ApplicationController
   end
 
   def is_buyer_transa?
-
     if current_buyer.id!=transaction.buyer_id
-      redirect_to root_path, notice: "Sorry, but you are only allowed to view your own profile page."
+      flash[:danger] = "Désolé cette page n'est pas accessible depuis votre profil, merci de vous connecter"
+      redirect_to root_path
     end
+  end  
+
+  def update_quantity
+    new_quantity=@transaction.offer.offer_quantity+@transaction.transa_quantity
+    offer.update(:offer_quantity => new_quantity)
   end
-
-
-
-  
 end
