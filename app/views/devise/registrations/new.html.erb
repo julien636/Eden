@@ -1,4 +1,4 @@
-<%= render "devise/shared/error_messages", resource: resource %>
+
 <div class="section-5">
 <div class="container-2 w-container">
 <div class="product">
@@ -7,8 +7,14 @@
     <div class="col-md-6 offset-md-3">
       <br><br><br>
       <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: "w-form" } do |f| %>
-        <h1 class="h3 mb-3 font-weight-normal text-center">Inscription sur Eden</h1></br></br>
+        <h1 class="h3 mb-3 font-weight-normal text-center">Inscription sur Eden</h1><br><br>
         <div class="field">
+        
+        <% if resource.errors.any? %> 
+          <div class="notification is-danger" >
+            <%= render "devise/shared/error_messages", resource: resource %>
+          </div>
+        <%end%>
         <%= f.label :email, "Email" %>
 
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>

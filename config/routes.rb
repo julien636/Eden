@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :buyers
+  devise_for :buyers, controllers: { registrations: "registrations" }
   get 'static_pages/team'
   get 'static_pages/contact'
   root :to => "static_pages#home"
