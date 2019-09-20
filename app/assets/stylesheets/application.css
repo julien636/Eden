@@ -7,6 +7,23 @@
 
 /** button
 */
+.button_cart_nav {
+  color: white;
+  text-decoration: none;
+  position: relative;
+  border-radius: 2px;
+  margin-bottom: -20;
+}
+
+.button_cart_nav .badge{
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 1px 7px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}
 
 .card-footer{
   display: flex;
@@ -5688,7 +5705,7 @@ text-align: center;
       margin-left: 15px;
     }
     .hero_img {
-      width: 100%;
+      width: cover;
     }
   }
   
