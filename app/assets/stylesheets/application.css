@@ -2597,6 +2597,14 @@
     font-weight: 300;
     text-align: center;
   }
+
+  .landing_button{
+    margin-top: 5px;
+    margin-right: 35px;
+    margin-left: 35px;
+    font-family: Rubik, sans-serif;
+    text-align: center; 
+  }
   
   .section-2 {
     margin-top: 67px;
