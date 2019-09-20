@@ -5,7 +5,7 @@
       <div class="product">
         <div class="product-info">
           <h1 class="heading-3"><%=Product.find(@offer.product_id).prod_name %></h1>
-          <p class="text-grey">Quantité totale : <%=@offer.offer_quantity %>kg<br>Date de la récolte : <%=@offer.date_harvest.to_date.to_formatted_s(:long)  %><br>Lieu de la récolte : <%=@offer.offer_city%></p>
+          <p class="text-grey">Variété : <%=@offer.product.prod_subname.capitalize %></br>Quantité totale : <%=@offer.offer_quantity %>kg<br>Date de la récolte : <%=@offer.date_harvest.to_date.to_formatted_s(:long)  %><br>Lieu de la récolte : <%=@offer.offer_city%></p>
           <div class="product-price">Prix : <%=@offer.offer_price %> FCFA/kg</div>
           <div class="w-form">
             <%= form_for @newtransaction, :url => "/offers/#{@offer.id}/transactions"  do |f| %>

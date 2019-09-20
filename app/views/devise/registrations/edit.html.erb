@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-md-6 offset-md-3">
 
-<h2>Modifier compte</h2></br></br>
+<h2>Modifier mes identifiants</h2></br></br>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -41,7 +41,7 @@
   </div>
 
   <div class="actions">
-  <%= f.submit "Mettre à jour", class: "button small w-button" %>
+  <%= f.submit "Enregistrer", class: "button small w-button" %>
   </div>
 <% end %>
 

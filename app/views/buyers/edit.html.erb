@@ -15,30 +15,31 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 offset-md-3">
-          <h1 class="heading-3">Mettre à jour mon profil</h1> <br/>
+          <h1 class="heading-3">Mettre à jour mon profil</h1> <br/></br>
           <div class="w-form">
 
           <%= form_for @buyer do |f| %>
 
             <%= f.label :Prénom %>
-            <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "text-field-2 w-input" %><br/>
-
+            <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "input" %><br/></br>
             <%= f.label :Nom %>
-            <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "text-field-2 w-input" %><br/>
+            <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "input" %><br/></br>
 
-            <%= f.label :Zipcode %><br />
-            <%= f.text_field :buyer_zipcode, autofocus: true, autocomplete: "buyer_zipcode", class: "text-field-2 w-input" %><br/>
+            <%= f.label :code_postal %>
+            <%= f.text_field :buyer_zipcode, autofocus: true, autocomplete: "buyer_zipcode", class: "input" %><br/></br>
             
             <%= f.label :Adresse %>
-            <%= f.text_field :buyer_adress, autofocus: true, autocomplete: "buyer_adress", class: "text-field-2 w-input" %><br/>
+            <%= f.text_field :buyer_adress, autofocus: true, autocomplete: "buyer_adress", class: "input" %><br/></br>
 
             <%= f.label :Ville %>
-            <%= f.text_field :buyer_city, autofocus: true, autocomplete: "buyer_city", class: "text-field-2 w-input" %><br/>
+            <%= f.text_field :buyer_city, autofocus: true, autocomplete: "buyer_city", class: "input" %><br/></br>
 
             <%= f.label :Pays %>
-            <%= f.text_field :buyer_country, autofocus: true, autocomplete: "buyer_country", class: "text-field-2 w-input" %>
+            <%= f.text_field :buyer_country, autofocus: true, autocomplete: "buyer_country", class: "input" %></br>
 
-            <button type="submit" class="button small w-button">Editer le profil</button>
+            <div class="actions">
+            <%= f.submit "Enregistrer", class: "button small w-button" %>
+          </div>
                                   
           <% end %>
           
