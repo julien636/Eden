@@ -17,20 +17,33 @@
   </head>
 
   <body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav class="navbar topnav" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href='/offers'>
           <%= image_tag "eden_logo.svg"%>
 
         </a>
  
-        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"onclick="showBurgerButton()">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </a>
       </div>
-
+      <span  id="myLinks">
+            <% if !current_buyer%>
+              <div class="buttons">
+                <%= link_to "Se connecter", new_buyer_session_path, class: "tag is-medium is-light"%>&nbsp;
+                <%= link_to "S'inscrire", new_buyer_registration_path, class: "tag is-medium is-primary" %><br />
+              </div>
+            <%else%>
+              <div class="buttons">
+                <%= link_to "Mon Profil", buyer_path(current_buyer.id), class: "tag is-medium is-primary" %>&nbsp;
+                <%= render partial: 'layouts/cart' %>&nbsp;
+                <%= link_to "Se déconnecter", destroy_buyer_session_path, :data => {:confirm => 'Are you sure?'},:data => {:method => 'DELETE'}, class: "tag is-medium is-light" %><br />
+              </div>
+            <%end%>
+      </span><br/>
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
           <a class="navbar-item" href='/'>
