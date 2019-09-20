@@ -1,0 +1,64 @@
+<div>
+    <h1 class="heading-6">Bienvenue sur Eden </h1>
+</div>
+<br/><br/><br/>
+
+   
+<div class="container w-container">
+  
+    <div class="tabs">
+      <ul>
+        <li class="tablinks is-active" onclick="openTab(event, 'vegetables_id')
+        "><a>Légumes</a></li>
+        <li class="tablinks" onclick="openTab(event, 'legumes_id')
+        "><a>Légumineuses</a></li>
+        <li class="tablinks" onclick="openTab(event, 'cereals_id')
+        "><a>Céréales</a></li>
+        <li class="tablinks" onclick="openTab(event, 'fruits_id')
+        "><a>Fruits</a></li>
+      </ul>
+    </div>
+    <br/>
+
+    <div id="vegetables_id" class="columns w-row tabcontent">
+      <%= form_tag(fetch_offers_path(format: :js),:method => :get ,:remote => true) do %>
+        <%= select_tag "category", options_from_collection_for_select(@sub_vegetables, "id", "prod_name"),  { :include_blank => true , :class => "select is-primary"} %>
+        <%= submit_tag 'Filtrer', :class => "tag is-primary" %>
+      <% end %> <br/>
+      <br/><br/>
+      <%= render partial: 'vegetables_list' %>  
+    </div>
+
+    <div id="legumes_id" class="columns w-row tabcontent">
+      <%= form_tag(fetch_offers_path(format: :js),:method => :get ,:remote => true) do %>
+        <%= select_tag "category", options_from_collection_for_select(@sub_legumes, "id", "prod_name"),  { :include_blank => true , :class => "select is-primary"} %>
+        <%= submit_tag 'Filtrer', :class => "tag is-primary" %>
+      <% end %> <br/>
+      <br/><br/>  
+      <%= render partial: 'legumes_list' %> 
+    </div>
+    
+
+    <div id="cereals_id" class="columns w-row tabcontent">
+      <%= form_tag(fetch_offers_path(format: :js),:method => :get ,:remote => true) do %>
+        <%= select_tag "category", options_from_collection_for_select(@sub_cereals, "id", "prod_name"),  { :include_blank => true , :class => "select is-primary"} %>
+        <%= submit_tag 'Filtrer', :class => "tag is-primary" %>
+      <% end %> <br/>
+      <br/><br/>
+       <%= render partial: 'cereals_list' %>
+
+    </div>
+
+    <div id="fruits_id" class="columns w-row tabcontent">
+      <%= form_tag(fetch_offers_path(format: :js),:method => :get ,:remote => true) do %>
+        <%= select_tag "category", options_from_collection_for_select(@sub_fruits, "id", "prod_name"),  { :include_blank => true , :class => "select is-primary"} %>
+        <%= submit_tag 'Filtrer', :class => "tag is-primary" %>
+      <% end %> <br/>
+      <br/><br/>
+      <%= render partial: 'fruits_list' %> 
+    </div>
+
+
+</div>
+
+ 

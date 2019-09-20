@@ -21,6 +21,11 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
+twilionumber2: <%= Rails.application.credentials.dig(:twilio_number2) %>
+twilionumber:  <%= Rails.application.credentials.dig(:twilio_number) %>
+twiliosid:  <%= Rails.application.credentials.dig(:twilio_sid) %>
+twiliotoken:  <%= Rails.application.credentials.dig(:twilio_token) %>
+
 development:
   <<: *default
   database: Eden_development

@@ -1,0 +1,67 @@
+<% if @transactions.size > 0 %>
+	<% @transactions.each do |item| %>
+		<div class="card">
+			<header class="card-header">
+				<p class="card-header-title">
+				<h3><%= item.offer.product.prod_name %> #<%= item.offer.id%> :
+
+				<%= (item.offer.offer_price * item.transa_quantity)/10%>€</h3>
+				</p>
+				<a link_to ="#" class="card-header-icon" aria-label="more options">
+				<span class="icon">
+					<i class="fas fa-angle-down" aria-hidden="true"></i>
+				</span>
+				</a>
+			</header>
+			<div class="card-content column is-flex">
+				<div class="pull-left column">
+					<div class="product-card w-inline-block">
+						<div class="offer-recap card-content">
+							<h4> Informations sur le vendeur </h4>
+							<ul> Adresse : <%= item.offer.offer_adress%></ul>
+							<ul> Code postal : <%= item.offer.offer_zipcode%></ul>
+							<ul> Ville : <%= item.offer.offer_city %></ul>
+							<ul> Pays : <%= item.offer.offer_country %></ul>
+							<ul> Date de récolte : <%=item.offer.date_harvest.to_date.to_formatted_s(:long)%></ul>
+						</div>
+					</div>
+				</div>
+				<div class ="pull-right column">
+					<div class ="product-card w-inline-block">
+						<div class="transa-recap card-content">
+							<h4> Récapitulatif de la transaction </h4>
+							<ul> Adresse : <%= item.transa_adress%></ul>
+							<ul> Code Postal : <%= item.transa_zipcode%></ul>
+							<ul> Quantité : <%= item.transa_quantity%> kg</ul>
+							<ul> Date de rencontre : <%= item.transa_date.to_date.to_formatted_s(:long)%></ul>
+							<ul> Ville : <%= item.transa_city%></ul>
+							<ul> Statut de la commande : <% if item.transa_confirmation == false %> En attente <% else %> Validée<% end %></ul>
+						</div>
+						<hr>
+						<div class="product-card-image-wrapper"><img width="200" src="https://uploads-ssl.webflow.com/5d7e3127cad5177918ca3737/5d7e49b0a3db08f53036d9b4_lemon.svg" alt=""></div>
+					</div>
+				</div>
+			</div>
+			<a class="button is-primary is-outlined" href="<%=offer_transaction_path(item.offer.id,item.id)%>" role="button" data-confirm="Etes-vous sur?" data-method="DELETE" >Retirer du panier</a>
+		</div>
+		<div></div>	  	
+	<% end %>
+	<h2><%= render "carts/stripe" %></h1>
+<% else %>
+<div class="section-5">
+	<div class="container-2 w-container">
+		<div class="product">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 offset-md-3">
+						<div id="empty_cart">
+							<h2> Votre panier est vide </h2><br><br><br>
+							<%= link_to "Acheter", offers_path, class: "tag is-medium is-primary"%>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<% end %>

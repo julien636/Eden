@@ -1,0 +1,52 @@
+
+<div class="section-5">
+<div class="container-2 w-container">
+<div class="product">
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <br><br><br>
+      <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: "w-form" } do |f| %>
+        <h1 class="h3 mb-3 font-weight-normal text-center">Inscription sur Eden</h1><br><br>
+        <div class="field">
+        
+        <% if resource.errors.any? %> 
+          <div class="notification is-danger" >
+            <%= render "devise/shared/error_messages", resource: resource %>
+          </div>
+        <%end%>
+        <%= f.label :email, "Email" %>
+
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
+        </p>
+        </div>
+
+        <div class="field">
+          <%= f.label :mot_de_passe %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> caractères minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password", class: "input" %>
+
+        </div>
+
+
+        <div class="field">
+          <%= f.label :confirmation %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input" %>
+      </p>
+    </div>        
+
+
+        
+        <div class="actions">
+          <%= f.submit "S'inscrire", class: "button small w-button" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+

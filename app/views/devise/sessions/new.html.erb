@@ -1,0 +1,40 @@
+<div class="section-5">
+<div class="container-2 w-container">
+<div class="product">
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <br><br><br>
+      <%= form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "form" } do |f| %>
+        <h1 class="h3 mb-3 font-weight-normal text-center">Se connecter à Eden</h1></br></br>
+        <%= devise_error_messages! %>
+
+        <div class="field">
+        <%= f.label :email, "Email" %>
+
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
+
+        </div>
+
+        <div class="field">
+        <%= f.label :mot_de_passe %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "input" %>
+      </div>
+      <%= render "devise/shared/links" %>
+      </br></br>
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me %>&nbsp;&nbsp;Enregistrer les identifiants
+          </div>
+        <% end %>
+        
+        <div class="actions mt-5">
+          <%= f.submit "Connexion", class: "button small w-button" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>

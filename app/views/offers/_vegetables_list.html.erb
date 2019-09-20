@@ -1,0 +1,39 @@
+    <%if @vegetables.include?(params[:category].to_i)==false%>
+
+      <div class="columns is-multiline" id="vegetables">
+
+      <% @li_vegetables.each do |offer| %>
+        <div class="column is-one-third">
+          <div class="product-card w-inline-block">
+              <div class="product-card-image-wrapper"><img width="99" src="https://uploads-ssl.webflow.com/5d7e3127cad5177918ca3737/5d7e49b0a3db08f53036d9b4_lemon.svg" alt=""></div>
+              <div class="card-content">
+                <h4 class="product-card-heading"><%=Product.find(offer.product_id).prod_name%></h4>
+                <h6 class="paragraph-2">Quantité restante: <%=offer.offer_quantity %>kg</h6>
+                <h6 class="paragraph-2 bold">Prix : <%=offer.offer_price %> FCFA/kg</h6>
+                <a href="<%=new_offer_transaction_path(offer.id)%>" role="button" class="button is-primary is-outlined">Voir les détails</a>
+              </div>
+          </div>     
+        </div>
+      <%end%> 
+      </div>
+
+      <%else%>
+
+      <br/>      
+      <div class="columns is-multiline" id="vegetables"><br/>
+      <% @offer_filter.each do |offer| %>
+        <div class="column is-one-third">
+          <div class="product-card w-inline-block">
+              <div class="product-card-image-wrapper"><img width="99" src="https://uploads-ssl.webflow.com/5d7e3127cad5177918ca3737/5d7e49b0a3db08f53036d9b4_lemon.svg" alt=""></div>
+              <div class="card-content">
+                <h4 class="product-card-heading"><%=Product.find(offer.product_id).prod_name%></h4>
+                <h6 class="paragraph-2">Quantité restante: <%=offer.offer_quantity %>kg</h6>
+                <h6 class="paragraph-2 bold">Prix : <%=offer.offer_price %> FCFA/kg</h6>
+                <a href="<%=new_offer_transaction_path(offer.id)%>" role="button" class="button is-primary is-outlined">Voir les détails</a>
+              </div>
+          </div>     
+        </div>
+      <%end%> 
+      </div>
+
+    <%end%>

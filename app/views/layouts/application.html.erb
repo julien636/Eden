@@ -1,15 +1,92 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Eden</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
   </head>
 
   <body>
+    <nav class="navbar topnav" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href='/offers'>
+          <%= image_tag "eden_logo.svg"%>
+
+        </a>
+ 
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"onclick="showBurgerButton()">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <span  id="myLinks">
+            <% if !current_buyer%>
+              <div class="buttons">
+                <%= link_to "Se connecter", new_buyer_session_path, class: "tag is-medium is-light"%>&nbsp;
+                <%= link_to "S'inscrire", new_buyer_registration_path, class: "tag is-medium is-primary" %><br />
+              </div>
+            <%else%>
+              <div class="buttons">
+                <%= link_to "Mon Profil", buyer_path(current_buyer.id), class: "tag is-medium is-primary" %>&nbsp;
+                <%= render partial: 'layouts/cart' %>&nbsp;
+                <%= link_to "Se déconnecter", destroy_buyer_session_path, :data => {:confirm => 'Are you sure?'},:data => {:method => 'DELETE'}, class: "tag is-medium is-light" %><br />
+              </div>
+            <%end%>
+      </span><br/>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href='/'>
+            À propos
+          </a>
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <% if !current_buyer%>
+              <div class="buttons">
+                <%= link_to "Se connecter", new_buyer_session_path, class: "tag is-medium is-light"%>&nbsp;
+                <%= link_to "S'inscrire", new_buyer_registration_path, class: "tag is-medium is-primary" %><br />
+              </div>
+            <%else%>
+              <div class="buttons">
+                <%= link_to "Mon Profil", buyer_path(current_buyer.id), class: "tag is-medium is-primary" %>&nbsp;
+                <%= render partial: 'layouts/cart' %>&nbsp;
+                <%= link_to "Se déconnecter", destroy_buyer_session_path, :data => {:confirm => 'Are you sure?'},:data => {:method => 'DELETE'}, class: "tag is-medium is-light" %><br />
+              </div>
+            <%end%>
+          </div>
+        </div>  
+      </div>
+    </nav>
+
+    <% if flash %>
+    <%flash.each do |name,msg|%>
+      <div class="notification is-<%=name%>" id="hideonclick">
+        <button class="delete" onclick="hideOnClick()
+        "></button>
+            <%= msg %>
+      </div>
+    <%end%>
+    <% end %>
+
     <%= yield %>
+    <%= csrf_meta_tags %>
+    <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <script src="javascripts/application.js" type="text/javascript"></script>
+    <%= render "layouts/footer1" %>
+    <%= render "layouts/footer2" %>
+
   </body>
 </html>
