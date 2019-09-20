@@ -8,12 +8,25 @@
 /** button
 */
 
+.card-footer{
+  display: flex;
+  justify-content: flex-end;
+  color: white;
+}
+
+#empty_cart{
+align-items: center;
+text-align: center;
+}
 .actions{
   text-align: center;
   align-content: center;
 }
 
-
+.cart_icon_wrap{
+  font-size: 200px;
+  color: #00D1B2;
+}
 
 /** FOOTER
 */

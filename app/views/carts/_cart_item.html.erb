@@ -16,34 +16,48 @@
 		<div class="card-content">
 			<div class="pull-left">
 				<div class="offer-recap">
-					<h4> Offer Recap </h4>
-					<ul> Adress : <%= item.offer.offer_adress%></ul>
-					<ul> Zipcode : <%= item.offer.offer_zipcode%></ul>
-					<ul> City : <%= item.offer.offer_city %></ul>
-					<ul> Country : <%= item.offer.offer_country %></ul>
-					<ul> Harvest Date : <%=item.offer.date_harvest%></ul>
+					<h4> Informations sur le vendeur </h4>
+					<ul> Adresse : <%= item.offer.offer_adress%></ul>
+					<ul> Code postal : <%= item.offer.offer_zipcode%></ul>
+					<ul> Ville : <%= item.offer.offer_city %></ul>
+					<ul> Pays : <%= item.offer.offer_country %></ul>
+					<ul> Date de récolte : <%=item.offer.date_harvest.to_date.to_formatted_s(:long)%></ul>
 				</div>
 			</div>
 			<div class ="pull-right">
 				<div class="transa-recap">
-					<h4> Transaction Recap </h4>
-					<ul> Adress : <%= item.transa_adress%></ul>
-					<ul> Zipcode : <%= item.transa_zipcode%></ul>
-					<ul> Quantity : <%= item.transa_quantity%></ul>
+					<h4> Récapitulatif de la transaction </h4>
+					<ul> Adresse : <%= item.transa_adress%></ul>
+					<ul> Code Postal : <%= item.transa_zipcode%></ul>
+					<ul> Quantité : <%= item.transa_quantity%></ul>
 					<ul> Date : <%= item.transa_date%></ul>
-					<ul> City : <%= item.transa_city%></ul>
-					<ul> Confirmation state : <%= item.transa_confirmation%></ul>
+					<ul> Ville : <%= item.transa_city%></ul>
+					<ul> Statut de la commande : <% if item.transa_confirmation == false %> En attente <% else %> Validée<% end %>
+						</ul>
 				</div>
 			</div>
 	  <footer class="card-footer">
-		<a href="#" class="card-footer-item">Save</a>
-		<a href="#" class="card-footer-item">Edit</a>
-		<a href="#" class="card-footer-item">Delete</a>
+		<%= button_to "Supprimer", offer_transaction_path(item), :method => "delete", :class => "tag is-medium is-light" %>
 	  </footer>
 	</div>
 	  </div>
 	<% end %>
 	<h2><%= render "carts/stripe" %></h1>
 <% else %>
-	
+<div class="section-5">
+<div class="container-2 w-container">
+<div class="product">
+<div class="container">
+  <div class="row">
+		<div class="col-md-6 offset-md-3">
+		<div id="empty_cart">
+		<h2> Votre panier est vide </h2></br></br></br>
+		<%= link_to "Acheter", offers_path, class: "tag is-medium is-primary"%>
+
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
 <% end %>
