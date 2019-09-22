@@ -82,7 +82,7 @@ class MessagesController < ApplicationController
   end
 
   def new_user
-    message = "Bienvenue sur Eden. Pour valider l'inscription, merci d'indiquer votre adresse, votre ville et le code postal dans le même message espacés par des #. Ex: 5 villa Haussmann#92130#Paris" 
+    message = "Bienvenue sur Eden. Pour valider l'inscription, merci d'indiquer votre adresse, votre ville et le code postal dans le même message espacés par des ##  Ex: 5 villa Haussmann#92130#Paris" 
 
     #Twilio send message
     from_number = params["From"]
@@ -218,10 +218,9 @@ class MessagesController < ApplicationController
   def fifth_message
     message_body = params["Body"]
     from_number = params["From"]
-    offerid = message_body[1..-1].to_i
+    transa = Transaction.find(message_body[1..-1])
     farmer = Farmer.find_by(phone_number: from_number)
-    transa = Transaction.find_by(offer_id: offerid)
-    if message_body.downcase.include?("y")
+    if message_body.downcase.include?("y"&&"#{transa.id}")
       boot_twilio
       @client.messages.create ({
         from: Rails.application.credentials.twilio_number,
@@ -233,7 +232,7 @@ class MessagesController < ApplicationController
       farmer.count = 0
       farmer.save
       BuyerMailer.confirmation_send(transa.buyer,transa).deliver_now
-    elsif message_body.downcase.include?("n")
+    elsif message_body.downcase.include?("n"&&"#{transa.id}")
       boot_twilio
       @client.messages.create ({
         from: Rails.application.credentials.twilio_number,
@@ -245,7 +244,12 @@ class MessagesController < ApplicationController
       farmer.count = 0
       farmer.save
     else 
-
+      boot_twilio
+      @client.messages.create ({
+        from: Rails.application.credentials.twilio_number,
+        to: from_number,
+        body: "Nous n'avons pas bien compris, veuillez vous référer au message précédent"
+      })
     end
   end
 
