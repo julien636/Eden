@@ -9,19 +9,19 @@
                 <div class="product-price">Prix : <%=@offer.offer_price %> FCFA/kg</div>
                 <div class="w-form">
                   <%= form_for @newtransaction, :url => "/offers/#{@offer.id}/transactions"  do |f| %>
+                    <% if @newtransaction.errors.any? %> 
+                      <div class="notification is-danger" >
+                        <%= render "devise/shared/error_messages", resource: @newtransaction %>
+                      </div>
+                    <%end%>
                     <label class="label"><%= f.label :Date_de_rencontre %></label>
                     <%= f.date_field :transa_date, autofocus: true, autocomplete: "transa_date", min: @offer.date_harvest %><br /><br />
                     <%= f.label :Quantité %>
                     <%= f.number_field :transa_quantity, autofocus: true,in: 0..@offer.offer_quantity, step: 5, autocomplete: "transa_quantity" %> kg <br />
                     <button type='submit' class="button small w-button"> Ajouter au panier </button>
                   <%end%>
-              
-              
           </div>
         </div>
-        
-      
-      
       </div>
     </div>
   </div>
@@ -38,6 +38,7 @@
 
     <div class="columns w-row tabcontent">
       <div class="columns  is-multiline">
+      <% if @same_offers!=nil%>
       <%@same_offers.each do |offer|%>
           <div class="column is-one-third">
             <div class="product-card w-inline-block">
@@ -51,6 +52,7 @@
             </div>     
           </div>
       <%end%> 
+      <%end%>
       </div>  
     </div>
   </div>  
