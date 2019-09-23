@@ -4,31 +4,25 @@
 </head>
 
 <body>
-  <section class="header-08">
+  
+  <section class="hero">
     <div class="hero-body">
-      <div class="columns is-flex">
-        <div class="column is-two-thirds">
-            <h1 class="heading-6 landing_title has-text-left">Petits agriculteurs,<br/> grandes ambitions</h1>
-            <h4 class="subtitle_landing landing_title has-text-left">La marketplace qui donne de la visibilité aux agriculteurs locaux</h2>
-            <%= link_to "Accéder à la marketplace", offers_path, class: "button is-primary is-inverted landing_button" %>&nbsp;
-
-
-        </div>
-        <div class="column">  
-          <%= image_tag "hero_perso.svg"%>
-        </div> 
-      </div>   
-
+      <div class="container">
+        <h1 class="title landing-h1">
+          Petits agriculteurs,<br/> grandes ambitions <br/>
+        </h1>
+        <h2 class="subtitle landing-h2">
+          La marketplace qui donne de la visibilité aux agriculteurs locaux
+        </h2>
+        <%= link_to "Accéder à la marketplace", offers_path, class: "button is-primary is-inverted landing_button" %>
+      </div>
     </div>
   </section>
-
-
-
     <div class="section_01">
       <div class="container_p">
         <div class="col_40">
-          <h1 class="h1_example">40% de pertes <br>post-récolte en Afrique</h1>
-          <p class="paragraph space_below">Ces pertes sont dues à une asymétrie d&#x27;informations entre grossistes et producteurs, ces derniers n&#x27;ayant pas Internet. <br><strong>Eden souhaite les connecter à un marché un ligne via des données SMS</strong></p>
+          <h1 class="h1_example">40% de pertes <br>post-récolte en Afrique</h1><br/>
+          <p class="paragraph space_below">Ces pertes sont dues à une asymétrie d&#x27;informations entre grossistes et producteurs, ces derniers n&#x27;ayant pas Internet. <br><br/><strong>Eden propose aux agriculteurs isolés de vendre par un simple SMS leur rendements</strong></p><br/>
         </div>
         <div class="col_60">
           <div class="card_row">
@@ -76,6 +70,8 @@
         </div>
       </div>
     </div>
-
+     <div class="section_01">
+        <%= youtube_video("https://www.youtube.com/embed/xbfkpoOifLc") %>        
+      </div>
 </body>
 

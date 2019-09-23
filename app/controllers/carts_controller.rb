@@ -20,7 +20,7 @@ class CartsController < ApplicationController
           @client.messages.create ({
           from: Rails.application.credentials.twilio_number,
           to: transa.offer.farmer.phone_number,
-          body: "Un acheteur souhaite #{transa.offer.offer_quantity}kilos de #{transa.offer.product.prod_subname} pour #{transa.offer.offer_price} par kilo. Pour accepter tapez Y#{transa.offer.id} pour refuser tapez N#{transa.offer.id}"
+          body: "Un acheteur souhaite #{transa.transa_quantity}kilos de #{transa.offer.product.prod_subname} pour #{transa.offer.offer_price} par kilo. Pour accepter tapez Y#{transa.id} pour refuser tapez N#{transa.id}"
           })
           transa.offer.farmer.count = 4
           transa.offer.farmer.save
