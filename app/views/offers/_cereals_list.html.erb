@@ -3,7 +3,7 @@
         <% @li_cereals.each do |offer| %>
           <div class="column is-one-third">
             <div class="product-card w-inline-block">
-                <div class="product-card-image-wrapper"><img width="99" src="https://uploads-ssl.webflow.com/5d7e3127cad5177918ca3737/5d7e49b0a3db08f53036d9b4_lemon.svg" alt=""></div>
+                <div class="product-card-image-wrapper" alt=""> <%= image_tag "#{offer.product.prod_name}.svg"%> </div>
                 <div class="card-content">
                   <h4 class="product-card-heading"><%=Product.find(offer.product_id).prod_name%></h4>
                   <h6 class="paragraph-2">Quantité restante: <%=offer.offer_quantity %>kg</h6>
@@ -20,7 +20,7 @@
         <% @offer_filter.each do |offer| %>
           <div class="column is-one-third">
             <div class="product-card w-inline-block">
-                <div class="product-card-image-wrapper"><img width="99" src="https://uploads-ssl.webflow.com/5d7e3127cad5177918ca3737/5d7e49b0a3db08f53036d9b4_lemon.svg" alt=""></div>
+                <div class="product-card-image-wrapper" img width="50" alt=""> <%= image_tag "#{offer.product.prod_name}.svg"%> </div>
                 <div class="card-content">
                   <h4 class="product-card-heading"><%=Product.find(offer.product_id).prod_name%></h4>
                   <h6 class="paragraph-2">Quantité restante: <%=offer.offer_quantity %>kg</h6>
@@ -32,3 +32,6 @@
         <%end%> 
       </div>
     <%end%>
+
+
+Offer.last.product.prod_name
