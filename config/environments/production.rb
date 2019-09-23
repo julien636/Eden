@@ -6,7 +6,7 @@ Rails.application.configure do
   config.require_master_key = true
 
   config.action_mailer.perform_deliveries = true
-
+  config.action_mailer.default_url_options={:host => 'edenprod.herokuapp.com'}
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
