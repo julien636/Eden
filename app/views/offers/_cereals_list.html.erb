@@ -7,6 +7,8 @@
                 <div class="card-content">
                   <h4 class="product-card-heading"><%=Product.find(offer.product_id).prod_name%></h4>
                   <h6 class="paragraph-2">Quantité restante: <%=offer.offer_quantity %>kg</h6>
+                  <h6 class="paragraph-2">Variété: <%=offer.product.prod_subname.capitalize %></h6>
+                  <h6 class="paragraph-2"> lieu de la récolte: <%=offer.offer_city%></h6>
                   <h6 class="paragraph-2 bold">Prix : <%=offer.offer_price %> FCFA/kg</h6>
                   <a href="<%=new_offer_transaction_path(offer.id)%>" role="button" class="button is-primary is-outlined">Voir les détails</a>
                 </div>
@@ -24,6 +26,8 @@
                 <div class="card-content">
                   <h4 class="product-card-heading"><%=Product.find(offer.product_id).prod_name%></h4>
                   <h6 class="paragraph-2">Quantité restante: <%=offer.offer_quantity %>kg</h6>
+                  <h6 class="paragraph-2">Variété: <%=offer.product.prod_subname.capitalize %></h6>
+                  <h6 class="paragraph-2"> lieu de la récolte: <%=offer.offer_city%></h6>
                   <h6 class="paragraph-2 bold">Prix : <%=offer.offer_price %> FCFA/kg</h6>
                   <a href="<%=new_offer_transaction_path(offer.id)%>" role="button" class="button is-primary is-outlined">Voir les détails</a>
                 </div>
@@ -34,4 +38,3 @@
     <%end%>
 
 
-Offer.last.product.prod_name
