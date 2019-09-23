@@ -1,9 +1,4 @@
 class BuyersController < ApplicationController
-  # Include default devise modules. Others available are:
-  # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, 
-
   before_action :authenticate_buyer!
 
   def show
