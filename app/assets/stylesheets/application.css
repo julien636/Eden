@@ -3820,6 +3820,16 @@ text-align: center;
     line-height: 27px;
     font-weight: 500;
   }
+
+  .h1_features-3 {
+    font-family: Rubik, sans-serif;
+    color: #342869;
+    font-size: 24px;
+    line-height: 27px;
+    font-weight: 500;
+    align-items: center;
+    text-align: center;
+  }
   
   .container-flex-n1 {
     position: relative;
