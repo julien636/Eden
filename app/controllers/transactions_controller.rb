@@ -7,7 +7,7 @@ class TransactionsController < ApplicationController
     @offer=offer
     @same_offers=[]
     Offer.all.each do |offers|
-      if (offers.product_id.nil? == false)
+      if (offers.product_id.nil? == false) && (off.offer_quantity.nil? == false)
       if offers.product.prod_name ==  @offer.product.prod_name && offers!=@offer
         @same_offers << offer
       end

@@ -28,7 +28,7 @@ class OffersController < ApplicationController
   def ram
     @offers=[]
     Offer.all.each do |off|
-      if (off.product_id.nil? == false)
+      if (off.product_id.nil? == false) && (off.offer_quantity.nil? == false)
       if (off.offer_quantity > 0)
         @offers<<off
       end
