@@ -28,8 +28,10 @@ class OffersController < ApplicationController
   def ram
     @offers=[]
     Offer.all.each do |off|
-      if off.offer_quantity > 0
+      if (off.product_id.nil? == false)
+      if (off.offer_quantity > 0)
         @offers<<off
+      end
       end
     end
     @sub_cereals=Product.cereal_prod.to_a.uniq{ |o| o.prod_name}
